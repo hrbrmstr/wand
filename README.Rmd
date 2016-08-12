@@ -2,11 +2,15 @@
 output: rmarkdown::github_document
 ---
 
-`filemagic` : ...
+`filemagic` : R interface to libmagic
 
 The following functions are implemented:
 
+- `get_mimetype` : returns the mimetype of the files in the input vector (as a data frame)
+
 The following data sets are included:
+
+- (eventually will be an internal mime types db)
 
 ### Installation
 
