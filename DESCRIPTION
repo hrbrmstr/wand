@@ -1,0 +1,20 @@
+Package: filemagic
+Type: Package
+Title: filemagic title goes here
+Version: 0.1.0
+Date: 2016-08-12
+Author: Bob Rudis (@hrbrmstr)
+Maintainer: Bob Rudis <bob@rudis.net>
+Description: filemagic description goes here
+URL: http://github.com/hrbrmstr/filemagic
+BugReports: https://github.com/hrbrmstr/filemagic/issues
+License: AGPL
+Suggests:
+    testthat
+Depends:
+    R (>= 3.0.0)
+Imports:
+    purrr,
+    Rcpp
+LinkingTo: Rcpp
+RoxygenNote: 5.0.1
