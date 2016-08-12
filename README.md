@@ -50,24 +50,11 @@ packageVersion("filemagic")
 ``` r
 library(filemagic)
 library(testthat)
-```
 
-    ## 
-    ## Attaching package: 'testthat'
-
-    ## The following object is masked from 'package:dplyr':
-    ## 
-    ##     matches
-
-    ## The following objects are masked from 'package:magrittr':
-    ## 
-    ##     equals, is_less_than, not
-
-``` r
 date()
 ```
 
-    ## [1] "Fri Aug 12 19:41:08 2016"
+    ## [1] "Fri Aug 12 19:47:32 2016"
 
 ``` r
 test_dir("tests/")
