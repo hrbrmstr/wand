@@ -2,11 +2,13 @@
 output: rmarkdown::github_document
 ---
 
-`filemagic` : R interface to libmagic
+`filemagic` : R interface to `libmagic`
+
+So you do need to install `libmagic` to use this. This should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
 
 The following functions are implemented:
 
-- `get_mimetype` : returns the mimetype of the files in the input vector (as a data frame)
+- `incant` : returns the mimetype of the files in the input vector (as a data frame)
 
 The following data sets are included:
 
@@ -24,8 +26,15 @@ options(width=120)
 
 ### Usage
 
-```{r}
+```{r message=FALSE}
 library(filemagic)
+library(magrittr)
+library(dplyr)
+
+system.file("img", package="filemagic") %>% 
+  list.files(full.names=TRUE) %>% 
+  incant() %>% 
+  glimpse()
 
 # current verison
 packageVersion("filemagic")
