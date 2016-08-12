@@ -5,14 +5,14 @@
 
 using namespace Rcpp;
 
-// get_mimetype
-DataFrame get_mimetype(CharacterVector path);
-RcppExport SEXP filemagic_get_mimetype(SEXP pathSEXP) {
+// incant
+DataFrame incant(CharacterVector path);
+RcppExport SEXP filemagic_incant(SEXP pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< CharacterVector >::type path(pathSEXP);
-    __result = Rcpp::wrap(get_mimetype(path));
+    __result = Rcpp::wrap(incant(path));
     return __result;
 END_RCPP
 }

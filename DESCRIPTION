@@ -3,14 +3,17 @@ Type: Package
 Title: filemagic title goes here
 Version: 0.1.0
 Date: 2016-08-12
-Author: Bob Rudis (@hrbrmstr)
+Author: Bob Rudis (@hrbrmstr), Christos Zoulas [libmagic]
 Maintainer: Bob Rudis <bob@rudis.net>
 Description: filemagic description goes here
 URL: http://github.com/hrbrmstr/filemagic
 BugReports: https://github.com/hrbrmstr/filemagic/issues
 License: AGPL
 Suggests:
-    testthat
+    testthat,
+    tibble,
+    magrittr,
+    dplyr
 Depends:
     R (>= 3.0.0)
 Imports:

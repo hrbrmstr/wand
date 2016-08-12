@@ -3,8 +3,18 @@
 
 #' Return file info
 #'
+#' @param path character vector of files to use magic on
+#' @return a \code{tibble} / \code{data.frame} of file magic attributes
 #' @export
-get_mimetype <- function(path) {
-    .Call('filemagic_get_mimetype', PACKAGE = 'filemagic', path)
+#' @examples
+#' library(magrittr)
+#' library(dplyr)
+#'
+#' system.file("img", package="filemagic") %>%
+#'   list.files(full.names=TRUE) %>%
+#'   incant() %>%
+#'   glimpse()
+incant <- function(path) {
+    .Call('filemagic_incant', PACKAGE = 'filemagic', path)
 }
 
