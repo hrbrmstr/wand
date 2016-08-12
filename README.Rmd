@@ -43,7 +43,7 @@ packageVersion("filemagic")
 
 ### Test Results
 
-```{r}
+```{r message=FALSE}
 library(filemagic)
 library(testthat)
 
