@@ -145,3 +145,6 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
   return(df);
 
 }
+
+// [[Rcpp::export]]
+int lib_version() { return(magic_version()); }

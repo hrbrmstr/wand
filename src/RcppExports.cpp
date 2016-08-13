@@ -17,3 +17,13 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// lib_version
+int lib_version();
+RcppExport SEXP wand_lib_version() {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(lib_version());
+    return __result;
+END_RCPP
+}
