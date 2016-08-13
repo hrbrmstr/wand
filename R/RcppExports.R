@@ -28,3 +28,7 @@ incant <- function(path, magic_db = "system") {
     .Call('wand_incant', PACKAGE = 'wand', path, magic_db)
 }
 
+lib_version <- function() {
+    .Call('wand_lib_version', PACKAGE = 'wand')
+}
+

@@ -22,6 +22,10 @@ a \code{tibble} / \code{data.frame} of file magic attributes.
 \description{
 Retrieve 'magic' attributes from files and directories
 }
+\note{
+Various fields might not be available depending on the version
+  of \code{libmagic} you have installed.
+}
 \examples{
 library(magrittr)
 library(dplyr)
