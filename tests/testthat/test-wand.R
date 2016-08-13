@@ -7,6 +7,6 @@ test_that("we can do something", {
   tmp <- unlist(tmp, use.names=FALSE)
   tmp <- sort(tmp)
 
-  expect_that(tmp[2], equals("C source, ASCII text"))
+  expect_that(tmp[3], equals("C source, ASCII text"))
 
 })
