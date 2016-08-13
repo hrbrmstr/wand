@@ -54,7 +54,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 12 21:41:40 2016"
+    ## [1] "Fri Aug 12 22:22:17 2016"
 
 ``` r
 test_dir("tests/")
