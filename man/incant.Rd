@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{incant}
 \alias{incant}
-\title{Return file info}
+\title{Retrieve 'magic' attributes from files and directories}
 \usage{
 incant(path)
 }
@@ -10,10 +10,13 @@ incant(path)
 \item{path}{character vector of files to use magic on}
 }
 \value{
-a \code{tibble} / \code{data.frame} of file magic attributes
+a \code{tibble} / \code{data.frame} of file magic attributes.
+  Specifically, mime type, encoding, possible file extensions and
+  type description are returned as colums in the data frame along
+  with \code{path}.
 }
 \description{
-Return file info
+Retrieve 'magic' attributes from files and directories
 }
 \examples{
 library(magrittr)
