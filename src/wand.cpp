@@ -4,10 +4,13 @@ using namespace Rcpp;
 #include "magic.h"
 #include "limits.h"
 
-//' Return file info
+//' Retrieve 'magic' attributes from files and directories
 //'
 //' @param path character vector of files to use magic on
-//' @return a \code{tibble} / \code{data.frame} of file magic attributes
+//' @return a \code{tibble} / \code{data.frame} of file magic attributes.
+//'   Specifically, mime type, encoding, possible file extensions and
+//'   type description are returned as colums in the data frame along
+//'   with \code{path}.
 //' @export
 //' @examples
 //' library(magrittr)
@@ -21,6 +24,7 @@ using namespace Rcpp;
 DataFrame incant(CharacterVector path) {
 
   unsigned int input_size = path.size();
+
   StringVector mime_type(input_size);
   StringVector encoding(input_size);
   StringVector extensions(input_size);
@@ -35,7 +39,6 @@ DataFrame incant(CharacterVector path) {
 
     int flags = MAGIC_MIME_TYPE;
     magic_t cookie = magic_open(flags);
-
     if (cookie == NULL) {
       mime_type[i] = NA_STRING;
     } else {
@@ -95,11 +98,11 @@ DataFrame incant(CharacterVector path) {
     }
   }
 
-  DataFrame df = DataFrame::create(_["file"] = path,
-                                   _["mime_type"] = mime_type,
-                                   _["encoding"] = encoding,
-                                   _["extensions"] = extensions,
-                                   _["description"] = description,
+  DataFrame df = DataFrame::create(_["file"]             = path,
+                                   _["mime_type"]        = mime_type,
+                                   _["encoding"]         = encoding,
+                                   _["extensions"]       = extensions,
+                                   _["description"]      = description,
                                    _["stringsAsFactors"] = false);
 
   df.attr("class") = CharacterVector::create("tbl_df", "tbl", "data.frame");
