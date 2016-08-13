@@ -2,13 +2,13 @@
 output: rmarkdown::github_document
 ---
 
-`filemagic` : R interface to `libmagic`
+`wand` : Retrieve 'Magic' Attributes from Files and Directories
 
-So you do need to install `libmagic` to use this. This should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
+The `libmagic` library must be installed and available to use this. The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
 
 The following functions are implemented:
 
-- `incant` : returns the mimetype of the files in the input vector (as a data frame)
+- `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
 
 The following data sets are included:
 
@@ -17,7 +17,7 @@ The following data sets are included:
 ### Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/filemagic")
+devtools::install_github("hrbrmstr/wand")
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
@@ -27,24 +27,24 @@ options(width=120)
 ### Usage
 
 ```{r message=FALSE}
-library(filemagic)
+library(wand)
 library(magrittr)
 library(dplyr)
 
-system.file("img", package="filemagic") %>% 
+system.file("img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant() %>% 
   glimpse()
 
 # current verison
-packageVersion("filemagic")
+packageVersion("wand")
 
 ```
 
 ### Test Results
 
 ```{r message=FALSE}
-library(filemagic)
+library(wand)
 library(testthat)
 
 date()

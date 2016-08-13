@@ -15,6 +15,6 @@
 #'   incant() %>%
 #'   glimpse()
 incant <- function(path) {
-    .Call('filemagic_incant', PACKAGE = 'filemagic', path)
+    .Call('wand_incant', PACKAGE = 'wand', path)
 }
 

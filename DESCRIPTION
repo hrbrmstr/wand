@@ -1,13 +1,16 @@
-Package: filemagic
+Package: wand
 Type: Package
-Title: filemagic title goes here
+Title: Retrieve 'Magic' Attributes from Files and Directories
 Version: 0.1.0
 Date: 2016-08-12
 Author: Bob Rudis (@hrbrmstr), Christos Zoulas [libmagic]
 Maintainer: Bob Rudis <bob@rudis.net>
-Description: filemagic description goes here
-URL: http://github.com/hrbrmstr/filemagic
-BugReports: https://github.com/hrbrmstr/filemagic/issues
+Description: The 'libmagic' library provides functions to determine 
+    mime type and other metadata from files through their "magic" 
+    attributes.
+URL: http://github.com/hrbrmstr/wand
+BugReports: https://github.com/hrbrmstr/wand/issues
+SystemRequirements: libmagic
 License: AGPL
 Suggests:
     testthat,

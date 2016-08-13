@@ -3,4 +3,4 @@
 export(incant)
 import(purrr)
 importFrom(Rcpp,sourceCpp)
-useDynLib(filemagic)
+useDynLib(wand)
