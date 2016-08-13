@@ -10,10 +10,6 @@ The following functions are implemented:
 
 - `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
 
-The following data sets are included:
-
-- (eventually will be an internal mime types db)
-
 ### Installation
 
 ```{r eval=FALSE}

@@ -7,10 +7,6 @@ The following functions are implemented:
 
 -   `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
 
-The following data sets are included:
-
--   (eventually will be an internal mime types db)
-
 ### Installation
 
 ``` r
@@ -54,7 +50,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 12 22:22:17 2016"
+    ## [1] "Fri Aug 12 22:23:39 2016"
 
 ``` r
 test_dir("tests/")
