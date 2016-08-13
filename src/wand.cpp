@@ -30,6 +30,8 @@ DataFrame incant(CharacterVector path) {
   StringVector extensions(input_size);
   StringVector description(input_size);
 
+  const char *mtype = NULL;
+
   for (unsigned int i=0; i<input_size; i++) {
 
     if ((i % 10000) == 0) Rcpp::checkUserInterrupt();
@@ -42,7 +44,7 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       mime_type[i] = NA_STRING;
     } else {
-      magic_load(cookie, NULL);
+      magic_load(cookie, mtype);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         mime_type[i] = NA_STRING;
@@ -57,7 +59,7 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       encoding[i] = NA_STRING;
     } else {
-      magic_load(cookie, NULL);
+      magic_load(cookie, mtype);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         encoding[i] = NA_STRING;
@@ -72,7 +74,7 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       extensions[i] = NA_STRING;
     } else {
-      magic_load(cookie, NULL);
+      magic_load(cookie, mtype);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         extensions[i] = NA_STRING;
@@ -87,7 +89,7 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       description[i] = NA_STRING;
     } else {
-      magic_load(cookie, NULL);
+      magic_load(cookie, mtype);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         description[i] = NA_STRING;
