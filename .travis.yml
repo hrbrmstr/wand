@@ -1,6 +1,7 @@
 language: r
 warnings_are_errors: true
 sudo: required
+dist: trusty
 
 apt_packages:
  - libmagic-dev
