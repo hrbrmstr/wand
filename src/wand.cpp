@@ -40,7 +40,11 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
   const char *mdb;
   std::string mdbcpp;
 
+#ifndef MAGIC_VERSION
+  int version = 500;
+#else
   int version = magic_version();
+#endif
 
   if (magic_db == "system") {
     mdb = NULL;
@@ -147,4 +151,10 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
 }
 
 // [[Rcpp::export]]
-int lib_version() { return(magic_version()); }
+int lib_version() {
+#ifndef MAGIC_VERSION
+  return(500);
+#else
+  return(magic_version());
+#endif
+}
