@@ -11,6 +11,8 @@
 #'   Specifically, mime type, encoding, possible file extensions and
 #'   type description are returned as colums in the data frame along
 #'   with \code{path}.
+#' @note Various fields might not be available depending on the version
+#'   of \code{libmagic} you have installed.
 #' @references See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
 #'   for information on how to create your own \code{magic} database
 #' @export
