@@ -1,7 +1,16 @@
 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) [![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
+
 `wand` : Retrieve 'Magic' Attributes from Files and Directories
 
-The `libmagic` library must be installed and available to use this. The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
+The `libmagic` library must be installed and available to use this.
+
+-   `apt-get install libmagic-dev` on Debian-ish systems
+-   `brew install libmagic` on macOS
+
+While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
+
+The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome. Think of all the fame and glory you'll receive!
 
 The following functions are implemented:
 
@@ -70,7 +79,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Fri Aug 12 23:58:20 2016"
+    ## [1] "Sat Aug 13 12:12:14 2016"
 
 ``` r
 test_dir("tests/")
