@@ -3,9 +3,7 @@ warnings_are_errors: true
 sudo: required
 
 apt_packages:
- - binutils
- - libproj-dev
- - gdal-bin
+ - libmagic-dev
 
 env:
  global:

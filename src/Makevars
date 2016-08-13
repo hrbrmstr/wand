@@ -1,3 +1,1 @@
-CPPFLAGS =
-CXXFLAGS = -std=gnu99 -Wall -Wextra -O2 -g -fstack-protector
 PKG_LIBS = -lmagic

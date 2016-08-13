@@ -16,12 +16,13 @@ Suggests:
     testthat,
     tibble,
     magrittr,
-    dplyr,
-    rappdirs
+    dplyr
 Depends:
     R (>= 3.0.0)
 Imports:
     purrr,
-    Rcpp
+    Rcpp,
+    rappdirs,
+    utils
 LinkingTo: Rcpp
 RoxygenNote: 5.0.1
