@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // incant
 DataFrame incant(CharacterVector path);
-RcppExport SEXP filemagic_incant(SEXP pathSEXP) {
+RcppExport SEXP wand_incant(SEXP pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;

@@ -1,9 +1,9 @@
-#' A package to ...
+#' Retrieve 'Magic' Attributes from Files and Directories
 #'
-#' @name filemagic
+#' @name wand
 #' @docType package
 #' @author Bob Rudis (@@hrbrmstr)
 #' @import purrr
-#' @useDynLib filemagic
+#' @useDynLib wand
 #' @importFrom Rcpp sourceCpp
 NULL
