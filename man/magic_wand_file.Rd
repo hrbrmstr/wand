@@ -20,6 +20,8 @@ perform the decompression unless \code{force} is \code{TRUE} or the
 cache directory has been cleared.
 }
 \examples{
+library(magrittr)
+library(dplyr)
 
 system.file("img", package="filemagic") \%>\%
   list.files(full.names=TRUE) \%>\%
