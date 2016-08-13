@@ -4,14 +4,14 @@
 \alias{incant}
 \title{Retrieve 'magic' attributes from files and directories}
 \usage{
-incant(path, magic_db = NA_character_)
+incant(path, magic_db = "system")
 }
 \arguments{
 \item{path}{character vector of files to use magic on}
 
-\item{magic_db}{either \code{NULL} (the default) to use the built-in
-\code{magic.mgc} database or an atomic character vector with a
-colon-separated list of full paths to custom \code{magic.mgc} database(s).}
+\item{magic_db}{either "\code{system}" (the default) to use the system
+\code{magic} database or an atomic character vector with a
+colon-separated list of full paths to custom \code{magic} database(s).}
 }
 \value{
 a \code{tibble} / \code{data.frame} of file magic attributes.
@@ -33,6 +33,6 @@ system.file("img", package="filemagic") \%>\%
 }
 \references{
 See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
-  for information on how to create your own \code{magic.mgc} databases.
+  for information on how to create your own \code{magic} database
 }
 

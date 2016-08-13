@@ -5,8 +5,8 @@ Version: 0.1.0
 Date: 2016-08-12
 Author: Bob Rudis (@hrbrmstr), Christos Zoulas [libmagic]
 Maintainer: Bob Rudis <bob@rudis.net>
-Description: The 'libmagic' library provides functions to determine 
-    mime type and other metadata from files through their "magic" 
+Description: The 'libmagic' library provides functions to determine
+    mime type and other metadata from files through their "magic"
     attributes.
 URL: http://github.com/hrbrmstr/wand
 BugReports: https://github.com/hrbrmstr/wand/issues
@@ -16,7 +16,8 @@ Suggests:
     testthat,
     tibble,
     magrittr,
-    dplyr
+    dplyr,
+    rappdirs
 Depends:
     R (>= 3.0.0)
 Imports:

@@ -4,6 +4,7 @@
 #' @docType package
 #' @author Bob Rudis (@@hrbrmstr)
 #' @import purrr
+#' @import rappdirs
 #' @useDynLib wand
 #' @importFrom Rcpp sourceCpp
 NULL

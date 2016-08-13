@@ -7,10 +7,15 @@ using namespace Rcpp;
 //' Retrieve 'magic' attributes from files and directories
 //'
 //' @param path character vector of files to use magic on
+//' @param magic_db either "\code{system}" (the default) to use the system
+//'   \code{magic} database or an atomic character vector with a
+//'   colon-separated list of full paths to custom \code{magic} database(s).
 //' @return a \code{tibble} / \code{data.frame} of file magic attributes.
 //'   Specifically, mime type, encoding, possible file extensions and
 //'   type description are returned as colums in the data frame along
 //'   with \code{path}.
+//' @references See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
+//'   for information on how to create your own \code{magic} database
 //' @export
 //' @examples
 //' library(magrittr)
@@ -21,7 +26,7 @@ using namespace Rcpp;
 //'   incant() %>%
 //'   glimpse()
 // [[Rcpp::export]]
-DataFrame incant(CharacterVector path) {
+DataFrame incant(CharacterVector path, std::string magic_db="system") {
 
   unsigned int input_size = path.size();
 
@@ -30,7 +35,15 @@ DataFrame incant(CharacterVector path) {
   StringVector extensions(input_size);
   StringVector description(input_size);
 
-  const char *mtype = NULL;
+  const char *mdb;
+  std::string mdbcpp;
+
+  if (magic_db == "system") {
+    mdb = NULL;
+  } else {
+    mdbcpp = magic_db;
+    mdb = mdbcpp.c_str();
+  }
 
   for (unsigned int i=0; i<input_size; i++) {
 
@@ -44,7 +57,8 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       mime_type[i] = NA_STRING;
     } else {
-      magic_load(cookie, mtype);
+      int val = magic_load(cookie, mdb);
+      if (val < 0) magic_load(cookie, NULL);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         mime_type[i] = NA_STRING;
@@ -59,7 +73,8 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       encoding[i] = NA_STRING;
     } else {
-      magic_load(cookie, mtype);
+      int val = magic_load(cookie, mdb);
+      if (val < 0) magic_load(cookie, NULL);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         encoding[i] = NA_STRING;
@@ -74,7 +89,8 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       extensions[i] = NA_STRING;
     } else {
-      magic_load(cookie, mtype);
+      int val = magic_load(cookie, mdb);
+      if (val < 0) magic_load(cookie, NULL);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         extensions[i] = NA_STRING;
@@ -89,7 +105,8 @@ DataFrame incant(CharacterVector path) {
     if (cookie == NULL) {
       description[i] = NA_STRING;
     } else {
-      magic_load(cookie, mtype);
+      int val = magic_load(cookie, mdb);
+      if (val < 0) magic_load(cookie, NULL);
       const char *magic_result = magic_file(cookie, fullPath.c_str());
       if (magic_result == NULL) {
         description[i] = NA_STRING;
