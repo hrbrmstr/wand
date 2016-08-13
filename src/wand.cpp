@@ -14,6 +14,8 @@ using namespace Rcpp;
 //'   Specifically, mime type, encoding, possible file extensions and
 //'   type description are returned as colums in the data frame along
 //'   with \code{path}.
+//' @note Various fields might not be available depending on the version
+//'   of \code{libmagic} you have installed.
 //' @references See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
 //'   for information on how to create your own \code{magic} database
 //' @export
@@ -37,6 +39,8 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
 
   const char *mdb;
   std::string mdbcpp;
+
+  int version = magic_version();
 
   if (magic_db == "system") {
     mdb = NULL;
@@ -84,19 +88,21 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
       }
     }
 
-    flags = MAGIC_EXTENSION;
-    cookie = magic_open(flags);
-    if (cookie == NULL) {
-      extensions[i] = NA_STRING;
-    } else {
-      int val = magic_load(cookie, mdb);
-      if (val < 0) magic_load(cookie, NULL);
-      const char *magic_result = magic_file(cookie, fullPath.c_str());
-      if (magic_result == NULL) {
+    if (version >= 528) {
+      flags = MAGIC_EXTENSION;
+      cookie = magic_open(flags);
+      if (cookie == NULL) {
         extensions[i] = NA_STRING;
       } else {
-        std::string res = std::string(magic_result, strnlen(magic_result, 1024));
-        extensions(i) = res;
+        int val = magic_load(cookie, mdb);
+        if (val < 0) magic_load(cookie, NULL);
+        const char *magic_result = magic_file(cookie, fullPath.c_str());
+        if (magic_result == NULL) {
+          extensions[i] = NA_STRING;
+        } else {
+          std::string res = std::string(magic_result, strnlen(magic_result, 1024));
+          extensions(i) = res;
+        }
       }
     }
 
@@ -117,12 +123,22 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
     }
   }
 
-  DataFrame df = DataFrame::create(_["file"]             = path,
-                                   _["mime_type"]        = mime_type,
-                                   _["encoding"]         = encoding,
-                                   _["extensions"]       = extensions,
-                                   _["description"]      = description,
-                                   _["stringsAsFactors"] = false);
+  DataFrame df;
+
+  if (version >= 528) {
+    df = DataFrame::create(_["file"]             = path,
+                           _["mime_type"]        = mime_type,
+                           _["encoding"]         = encoding,
+                           _["extensions"]       = extensions,
+                           _["description"]      = description,
+                           _["stringsAsFactors"] = false);
+  } else {
+    df = DataFrame::create(_["file"]             = path,
+                           _["mime_type"]        = mime_type,
+                           _["encoding"]         = encoding,
+                           _["description"]      = description,
+                           _["stringsAsFactors"] = false);
+  }
 
   df.attr("class") = CharacterVector::create("tbl_df", "tbl", "data.frame");
 

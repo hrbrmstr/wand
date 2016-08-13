@@ -4,7 +4,14 @@ output: rmarkdown::github_document
 
 `wand` : Retrieve 'Magic' Attributes from Files and Directories
 
-The `libmagic` library must be installed and available to use this. The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
+The `libmagic` library must be installed and available to use this. 
+
+- `apt-get install libmagic-dev` on Debian-ish systems
+- `brew install libmagic` on macOS
+
+Minimum expected version of `libmagic` is 5.28 but it should work with older versions. Note that some fields in the resultant data frame might not be available with older library versions.
+
+The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome.
 
 The following functions are implemented:
 
