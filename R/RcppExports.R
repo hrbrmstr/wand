@@ -4,10 +4,15 @@
 #' Retrieve 'magic' attributes from files and directories
 #'
 #' @param path character vector of files to use magic on
+#' @param magic_db either "\code{system}" (the default) to use the system
+#'   \code{magic} database or an atomic character vector with a
+#'   colon-separated list of full paths to custom \code{magic} database(s).
 #' @return a \code{tibble} / \code{data.frame} of file magic attributes.
 #'   Specifically, mime type, encoding, possible file extensions and
 #'   type description are returned as colums in the data frame along
 #'   with \code{path}.
+#' @references See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
+#'   for information on how to create your own \code{magic} database
 #' @export
 #' @examples
 #' library(magrittr)
@@ -17,7 +22,7 @@
 #'   list.files(full.names=TRUE) %>%
 #'   incant() %>%
 #'   glimpse()
-incant <- function(path) {
-    .Call('wand_incant', PACKAGE = 'wand', path)
+incant <- function(path, magic_db = "system") {
+    .Call('wand_incant', PACKAGE = 'wand', path, magic_db)
 }
 

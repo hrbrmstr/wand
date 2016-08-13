@@ -9,6 +9,7 @@ The `libmagic` library must be installed and available to use this. The package 
 The following functions are implemented:
 
 - `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
+- `magic_wand_file` : provides a full path to the package-provided `magic` file
 
 ### Installation
 
@@ -31,6 +32,12 @@ system.file("img", package="wand") %>%
   list.files(full.names=TRUE) %>% 
   incant() %>% 
   glimpse()
+
+system.file("img", package="wand") %>% 
+  list.files(full.names=TRUE) %>% 
+  incant(magic_wand_file()) %>% 
+  select(description) %>% 
+  unlist(use.names=FALSE)
 
 # current verison
 packageVersion("wand")
