@@ -26,8 +26,10 @@ magic_wand_file <- function(force=FALSE) {
   if (!dir.exists(cache)) dir.create(cache, showWarnings=FALSE)
   if (!dir.exists(cache)) return("system")
 
-  suppressWarnings(unzip(system.file("magic.mgc.zip", package="wand"),
-        exdir=cache, overwrite=force))
+  if (!file.exists(file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc"))) {
+    suppressWarnings(unzip(system.file("magic.mgc.zip", package="wand"),
+                           exdir=cache, overwrite=force))
+  }
 
   file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc")
 
