@@ -1,2 +1,2 @@
 library(testthat)
-test_check("filemagic")
+test_check("wand")
