@@ -1,34 +1,23 @@
 #include <Rcpp.h>
+
 using namespace Rcpp;
 
+#ifdef _WIN32
+#define WINDOWS
+#endif
+
+#ifdef _WIN64
+#define WINDOWS
+#endif
+
+#ifndef WINDOWS
 #include "magic.h"
 #include "limits.h"
+#endif
 
-//' Retrieve 'magic' attributes from files and directories
-//'
-//' @param path character vector of files to use magic on
-//' @param magic_db either "\code{system}" (the default) to use the system
-//'   \code{magic} database or an atomic character vector with a
-//'   colon-separated list of full paths to custom \code{magic} database(s).
-//' @return a \code{tibble} / \code{data.frame} of file magic attributes.
-//'   Specifically, mime type, encoding, possible file extensions and
-//'   type description are returned as colums in the data frame along
-//'   with \code{path}.
-//' @note Various fields might not be available depending on the version
-//'   of \code{libmagic} you have installed.
-//' @references See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
-//'   for information on how to create your own \code{magic} database
-//' @export
-//' @examples
-//' library(magrittr)
-//' library(dplyr)
-//'
-//' system.file("img", package="filemagic") %>%
-//'   list.files(full.names=TRUE) %>%
-//'   incant() %>%
-//'   glimpse()
+#ifndef WINDOWS
 // [[Rcpp::export]]
-DataFrame incant(CharacterVector path, std::string magic_db="system") {
+DataFrame incant_(CharacterVector path, std::string magic_db="system") {
 
   unsigned int input_size = path.size();
 
@@ -149,6 +138,11 @@ DataFrame incant(CharacterVector path, std::string magic_db="system") {
   return(df);
 
 }
+#else
+DataFrame incant_(CharacterVector path, std::string magic_db="system") {
+  return(DataFrame::create());
+}
+#endif
 
 // [[Rcpp::export]]
 int lib_version() {

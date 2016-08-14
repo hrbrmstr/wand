@@ -3,14 +3,14 @@
 
 `wand` : Retrieve 'Magic' Attributes from Files and Directories
 
-The `libmagic` library must be installed and available to use this.
+The `libmagic` library must be installed on \*nix/macOS and available to use this.
 
 -   `apt-get install libmagic-dev` on Debian-ish systems
 -   `brew install libmagic` on macOS
 
 While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
 
-The package should also be pretty straightforward to get working on Windows. Assistance to do that is welcome. Think of all the fame and glory you'll receive!
+The package also works on Windows but it's a bit of a hack because, well, *Windows*. Seriously, folks, use a real operating system. The Windows version makes two `system2()` calls, so it's sub-optimal at best. Help to get it working in C would be greatly appreciated.
 
 The following functions are implemented:
 
@@ -68,7 +68,7 @@ system.file("img", package="wand") %>%
 packageVersion("wand")
 ```
 
-    ## [1] '0.1.0'
+    ## [1] '0.2.0'
 
 ### Test Results
 
@@ -79,7 +79,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sat Aug 13 12:12:14 2016"
+    ## [1] "Sun Aug 14 18:36:44 2016"
 
 ``` r
 test_dir("tests/")
