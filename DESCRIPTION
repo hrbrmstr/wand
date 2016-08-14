@@ -13,7 +13,8 @@ BugReports: https://github.com/hrbrmstr/wand/issues
 SystemRequirements: libmagic (>= 5.14)
 License: AGPL
 Suggests:
-    testthat
+    testthat,
+    magrittr
 Depends:
     R (>= 3.0.0)
 Imports:
@@ -24,6 +25,7 @@ Imports:
     utils,
     tidyr,
     stringi,
-    dplyr
+    dplyr,
+    stats
 LinkingTo: Rcpp
 RoxygenNote: 5.0.1
