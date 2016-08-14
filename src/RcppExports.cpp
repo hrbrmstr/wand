@@ -5,15 +5,15 @@
 
 using namespace Rcpp;
 
-// incant
-DataFrame incant(CharacterVector path, std::string magic_db);
-RcppExport SEXP wand_incant(SEXP pathSEXP, SEXP magic_dbSEXP) {
+// incant_
+DataFrame incant_(CharacterVector path, std::string magic_db);
+RcppExport SEXP wand_incant_(SEXP pathSEXP, SEXP magic_dbSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< CharacterVector >::type path(pathSEXP);
     Rcpp::traits::input_parameter< std::string >::type magic_db(magic_dbSEXP);
-    __result = Rcpp::wrap(incant(path, magic_db));
+    __result = Rcpp::wrap(incant_(path, magic_db));
     return __result;
 END_RCPP
 }

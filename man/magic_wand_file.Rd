@@ -4,10 +4,10 @@
 \alias{magic_wand_file}
 \title{Use the "magic" file that comes with the package}
 \usage{
-magic_wand_file(force = FALSE)
+magic_wand_file(refresh = FALSE)
 }
 \arguments{
-\item{force}{ensure the lastest copy of the pacakge "magic"
+\item{refresh}{ensure the lastest copy of the pacakge "magic"
 database is used.}
 }
 \description{

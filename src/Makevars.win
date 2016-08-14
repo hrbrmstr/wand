@@ -1,0 +1,9 @@
+all: winlibs
+
+clean:
+	rm -f $(OBJECTS) wand.dll
+
+winlibs:
+	"${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" "../tools/getfile.R"
+
+.PHONY: all winlibs clean

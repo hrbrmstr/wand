@@ -8,7 +8,7 @@
 #' perform the decompression unless \code{force} is \code{TRUE} or the
 #' cache directory has been cleared.
 #'
-#' @param force ensure the lastest copy of the pacakge "magic"
+#' @param refresh ensure the lastest copy of the pacakge "magic"
 #'   database is used.
 #' @export
 #' @examples
@@ -19,18 +19,19 @@
 #'   list.files(full.names=TRUE) %>%
 #'   incant(magic_wand_file()) %>%
 #'   glimpse()
-magic_wand_file <- function(force=FALSE) {
+magic_wand_file <- function(refresh=FALSE) {
 
   cache <- rappdirs::user_cache_dir("wandr")
 
-  if (!dir.exists(cache)) dir.create(cache, showWarnings=FALSE)
-  if (!dir.exists(cache)) return("system")
+  if (!dir.exists(cache)) dir.create(cache, recursive=TRUE, showWarnings=FALSE)
+  if (!dir.exists(cache)) return(NULL)
 
   if (lib_version() >= 528) vers <- "new" else vers <- "old"
+  if (get_os() == "win") vers <- "win"
 
-  if (!file.exists(file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc"))) {
-    suppressWarnings(unzip(system.file("db", vers, "magic.mgc.zip", package="wand"),
-                           exdir=cache, overwrite=force))
+  if (refresh | (!file.exists(file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc")))) {
+    unzip(system.file("db", vers, "magic.mgc.zip", package="wand"),
+                           exdir=cache, overwrite=TRUE)
   }
 
   file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc")
