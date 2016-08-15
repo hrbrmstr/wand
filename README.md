@@ -17,6 +17,10 @@ The following functions are implemented:
 -   `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
 -   `magic_wand_file` : provides a full path to the package-provided `magic` file
 
+The following datasets are included:
+
+-   `mime_db` : a database of all mime types from <https://github.com/jshttp/mime-db>
+
 ### Installation
 
 ``` r
@@ -27,10 +31,9 @@ devtools::install_github("hrbrmstr/wand")
 
 ``` r
 library(wand)
-library(magrittr)
 library(dplyr)
 
-system.file("img", package="wand") %>% 
+system.file("extdata", "img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant() %>% 
   glimpse()
@@ -38,16 +41,16 @@ system.file("img", package="wand") %>%
 
     ## Observations: 10
     ## Variables: 5
-    ## $ file        <chr> "/Library/Frameworks/R.framework/Versions/3.3/Resources/library/wand/img/example_dir", "/Librar...
+    ## $ file        <chr> "/Library/Frameworks/R.framework/Versions/3.3/Resources/library/wand/extdata/img/example_dir", ...
     ## $ mime_type   <chr> "inode/directory", "text/x-c", "text/html", "text/plain", "text/rtf", "image/jpeg", "applicatio...
     ## $ encoding    <chr> "binary", "us-ascii", "us-ascii", "us-ascii", "us-ascii", "binary", "binary", "binary", "us-asc...
-    ## $ extensions  <chr> NA, "???", "???", "???", "???", "jpeg/jpg/jpe/jfif", "???", "???", "???", "???"
+    ## $ extensions  <list> [NA, <"c", "cc", "cpp", "cxx", "dic", "h", "hh">, <"htm", "html", "shtml">, <"conf", "def", "i...
     ## $ description <chr> "directory", "C source, ASCII text", "HTML document, ASCII text, with CRLF line terminators", "...
 
 ``` r
 # Use a non-system magic-file
 
-system.file("img", package="wand") %>% 
+system.file("extdata", "img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant(magic_wand_file()) %>% 
   select(description) %>% 
@@ -66,6 +69,27 @@ system.file("img", package="wand") %>%
     ## [10] "TIFF image data, big-endian"
 
 ``` r
+# what kinds of extensions are associated with these mime types
+system.file("extdata", "img", package="wand") %>% 
+  list.files(full.names=TRUE) %>% 
+  incant(magic_wand_file()) %>% 
+  select(extensions) %>% 
+  as.data.frame()
+```
+
+    ##                                  extensions
+    ## 1                                        NA
+    ## 2               c, cc, cpp, cxx, dic, h, hh
+    ## 3                          htm, html, shtml
+    ## 4  conf, def, in, ini, list, log, text, txt
+    ## 5                                       rtf
+    ## 6                      jfif, jpe, jpeg, jpg
+    ## 7                                       pdf
+    ## 8                                       png
+    ## 9  conf, def, in, ini, list, log, text, txt
+    ## 10                                tif, tiff
+
+``` r
 # current verison
 packageVersion("wand")
 ```
@@ -81,7 +105,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Mon Aug 15 10:19:22 2016"
+    ## [1] "Mon Aug 15 11:54:15 2016"
 
 ``` r
 test_dir("tests/")

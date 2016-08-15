@@ -17,7 +17,7 @@
 #' @examples
 #' library(dplyr)
 #'
-#' system.file("img", package="filemagic") %>%
+#' system.file("extdata/img", package="filemagic") %>%
 #'   list.files(full.names=TRUE) %>%
 #'   incant() %>%
 #'   glimpse()
@@ -37,8 +37,8 @@ incant <- function(path, magic_db="system") {
 
     if (!found_file) {
       stop(paste0("'file.exe' not found. Please install 'Rtools' and restart R. ",
-           "See 'https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows' ",
-           "for more information on how to install 'Rtools'", collapse=""),
+                  "See 'https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows' ",
+                  "for more information on how to install 'Rtools'", collapse=""),
            call.=FALSE)
     }
 
@@ -49,17 +49,17 @@ incant <- function(path, magic_db="system") {
 
     suppressMessages(
       suppressWarnings(
-      system2(file_exe,
-            c("--mime-type", "--mime-encoding", "--no-buffer", "--preserve-date",
-              '--separator "||"',
-              sprintf('--files-from "%s"', tf)),
-            stdout=TRUE))) -> output_1
+        system2(file_exe,
+                c("--mime-type", "--mime-encoding", "--no-buffer", "--preserve-date",
+                  '--separator "||"',
+                  sprintf('--files-from "%s"', tf)),
+                stdout=TRUE))) -> output_1
 
     suppressMessages(
       suppressWarnings(system2(file_exe,
-            c("--no-buffer", "--preserve-date", '--separator "||"',
-              sprintf('--files-from "%s"', tf)),
-            stdout=TRUE))) -> output_2
+                               c("--no-buffer", "--preserve-date", '--separator "||"',
+                                 sprintf('--files-from "%s"', tf)),
+                               stdout=TRUE))) -> output_2
 
     unlink(tf)
 
@@ -74,12 +74,35 @@ incant <- function(path, magic_db="system") {
       setNames(c("file", "description")) -> df2
 
     left_join(df1, df2, by="file") %>%
-      mutate_all(stri_trim_both)
+      mutate_all(stri_trim_both) -> ret
 
   } else {
-    incant_(path, magic_db)
+    ret <- incant_(path, magic_db)
   }
+
+  if (!("extensions" %in% colnames(ret))) ret$extensions <- NA
+
+  mutate(ret, extensions=ifelse(extensions=="???", NA, extensions)) %>%
+    mutate(extensions=map_exts(mime_type, extensions))
+
 }
+
+map_exts <- function(mime_type, current_extensions) {
+
+  exts <- stri_split_regex(current_extensions, "/")
+
+  map2(mime_type, exts, function(mt, xt) {
+
+    ret <- wand::mime_db[[mt]]$extensions %||% NA
+    ret <- sort(unique(c(xt, ret)))
+    ret <- ret[!is.na(ret)]
+    if (length(ret)==0) ret <- NA
+    ret
+
+  })
+
+}
+
 
 #' ripped from rappdirs (ty Hadley!)
 get_os <- function () {

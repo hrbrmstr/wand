@@ -28,7 +28,7 @@ cache directory has been cleared.
 \examples{
 library(dplyr)
 
-system.file("img", package="filemagic") \%>\%
+system.file("extdata/img", package="filemagic") \%>\%
   list.files(full.names=TRUE) \%>\%
   incant(magic_wand_file()) \%>\%
   glimpse()

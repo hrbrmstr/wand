@@ -30,7 +30,7 @@ Various fields might not be available depending on the version
 \examples{
 library(dplyr)
 
-system.file("img", package="filemagic") \%>\%
+system.file("extdata/img", package="filemagic") \%>\%
   list.files(full.names=TRUE) \%>\%
   incant() \%>\%
   glimpse()
