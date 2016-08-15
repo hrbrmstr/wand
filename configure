@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Checking to see if libmagic is available..."
 
 : ${R_HOME=`R RHOME`}
