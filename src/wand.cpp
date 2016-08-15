@@ -12,7 +12,6 @@ using namespace Rcpp;
 
 #ifndef WINDOWS
 #include "magic.h"
-#include "limits.h"
 #endif
 
 #ifndef WINDOWS
@@ -48,6 +47,9 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
   // bits of info. I may just switch this over to a single call (all the
   // availabel flags) and do string parsing before pushing to CRAN.
 
+  int flags = MAGIC_MIME_TYPE;
+  magic_t cookie = magic_open(flags);
+
   for (unsigned int i=0; i<input_size; i++) {
 
     if ((i % 10000) == 0) Rcpp::checkUserInterrupt();
@@ -55,8 +57,6 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
     std::string path_str = as<std::string>(path[i]);
     std::string fullPath(R_ExpandFileName(path_str.c_str()));
 
-    int flags = MAGIC_MIME_TYPE;
-    magic_t cookie = magic_open(flags);
     if (cookie == NULL) {
       mime_type[i] = NA_STRING;
     } else {
@@ -71,8 +71,18 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
       }
     }
 
-    flags = MAGIC_MIME_ENCODING;
-    cookie = magic_open(flags);
+  }
+
+  flags = MAGIC_MIME_ENCODING;
+  cookie = magic_open(flags);
+
+  for (unsigned int i=0; i<input_size; i++) {
+
+    if ((i % 10000) == 0) Rcpp::checkUserInterrupt();
+
+    std::string path_str = as<std::string>(path[i]);
+    std::string fullPath(R_ExpandFileName(path_str.c_str()));
+
     if (cookie == NULL) {
       encoding[i] = NA_STRING;
     } else {
@@ -87,7 +97,17 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
       }
     }
 
-    if (version >= 528) {
+  }
+
+  if (version >= 528) {
+
+    for (unsigned int i=0; i<input_size; i++) {
+
+      if ((i % 10000) == 0) Rcpp::checkUserInterrupt();
+
+      std::string path_str = as<std::string>(path[i]);
+      std::string fullPath(R_ExpandFileName(path_str.c_str()));
+
       flags = MAGIC_EXTENSION;
       cookie = magic_open(flags);
       if (cookie == NULL) {
@@ -105,8 +125,17 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
       }
     }
 
-    flags = MAGIC_NONE;
-    cookie = magic_open(flags);
+  }
+
+  flags = MAGIC_NONE;
+  cookie = magic_open(flags);
+  for (unsigned int i=0; i<input_size; i++) {
+
+    if ((i % 10000) == 0) Rcpp::checkUserInterrupt();
+
+    std::string path_str = as<std::string>(path[i]);
+    std::string fullPath(R_ExpandFileName(path_str.c_str()));
+
     if (cookie == NULL) {
       description[i] = NA_STRING;
     } else {
@@ -120,6 +149,7 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
         description(i) = res;
       }
     }
+
   }
 
   DataFrame df;

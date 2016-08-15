@@ -45,6 +45,8 @@ system.file("img", package="wand") %>%
     ## $ description <chr> "directory", "C source, ASCII text", "HTML document, ASCII text, with CRLF line terminators", "...
 
 ``` r
+# Use a non-system magic-file
+
 system.file("img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant(magic_wand_file()) %>% 
@@ -79,7 +81,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Mon Aug 15 08:17:44 2016"
+    ## [1] "Mon Aug 15 09:30:22 2016"
 
 ``` r
 test_dir("tests/")
