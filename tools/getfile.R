@@ -1,5 +1,0 @@
-if(getRversion() < "3.3.0") setInternet2()
-download.file("https://www.stats.ox.ac.uk/pub/Rtools/goodies/file-5.03.zip", "file.zip", quiet = TRUE)
-dir.create("../inst/exec", showWarnings = FALSE)
-unzip("file.zip", "file.exe", exdir = "../inst/exec")
-unlink("file.zip")

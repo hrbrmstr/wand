@@ -10,7 +10,7 @@ The `libmagic` library must be installed on \*nix/macOS and available to use thi
 
 While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
 
-The package also works on Windows but it's a bit of a hack because, well, *Windows*. Seriously, folks, use a real operating system. The Windows version makes two `system2()` calls, so it's sub-optimal at best. Help to get it working in C would be greatly appreciated.
+The package also works on Windows but it's a bit of a hack because, well, *Windows*. The Windows version makes two `system2()` calls and relies on Rtools being installed and `file.exe` being available on the Windows `PATH`, so it's sub-optimal at best. Help to get it working in C would be greatly appreciated.
 
 The following functions are implemented:
 
@@ -79,7 +79,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Sun Aug 14 18:36:44 2016"
+    ## [1] "Mon Aug 15 08:17:44 2016"
 
 ``` r
 test_dir("tests/")

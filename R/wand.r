@@ -3,7 +3,8 @@
 #' @param path character vector of files to use magic on
 #' @param magic_db either "\code{system}" (the default) to use the system
 #'   \code{magic} database or an atomic character vector with a
-#'   colon-separated list of full paths to custom \code{magic} database(s).
+#'   colon-separated list of full paths to custom \code{magic} database(s). This parameter
+#'   is (for the moment) ignored on Windows.
 #' @return a \code{tibble} / \code{data.frame} of file magic attributes.
 #'   Specifically, mime type, encoding, possible file extensions and
 #'   type description are returned as colums in the data frame along
@@ -14,7 +15,6 @@
 #'   for information on how to create your own \code{magic} database
 #' @export
 #' @examples
-#' library(magrittr)
 #' library(dplyr)
 #'
 #' system.file("img", package="filemagic") %>%
@@ -25,24 +25,41 @@ incant <- function(path, magic_db="system") {
 
   if (get_os() == "win") {
 
-    file_exe <- system.file("exec/file.exe", package="wand")
+    found_file <- FALSE
+
+    file_exe <- Sys.which("file.exe")
+    found_file <- file_exe != ""
+
+    if (found_file) {
+      file_version <- suppressWarnings(system2(file_exe, "--version", stdout=TRUE, stderr=TRUE))
+      found_file <-  any(grepl("magic file", file_version))
+    }
+
+    if (!found_file) {
+      stop(paste0("'file.exe' not found. Please install 'Rtools' and restart R. ",
+           "See 'https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows' ",
+           "for more information on how to install 'Rtools'", collapse=""),
+           call.=FALSE)
+    }
 
     magic_db <- normalizePath(magic_wand_file())
 
     tf <- tempfile()
     writeLines(path, tf)
 
-    system2(file_exe,
+    suppressMessages(
+      suppressWarnings(
+      system2(file_exe,
             c("--mime-type", "--mime-encoding", "--no-buffer", "--preserve-date",
-              '--separator "||"', sprintf('--magic-file "%s"', magic_db),
+              '--separator "||"',
               sprintf('--files-from "%s"', tf)),
-            stdout=TRUE) -> output_1
+            stdout=TRUE))) -> output_1
 
-    system2(file_exe,
+    suppressMessages(
+      suppressWarnings(system2(file_exe,
             c("--no-buffer", "--preserve-date", '--separator "||"',
-              sprintf('--magic-file "%s"', magic_db),
               sprintf('--files-from "%s"', tf)),
-            stdout=TRUE) -> output_2
+            stdout=TRUE))) -> output_2
 
     unlink(tf)
 
@@ -56,13 +73,15 @@ incant <- function(path, magic_db="system") {
       as_data_frame() %>%
       setNames(c("file", "description")) -> df2
 
-    left_join(df1, df2, by="file")
+    left_join(df1, df2, by="file") %>%
+      mutate_all(stri_trim_both)
 
   } else {
     incant_(path, magic_db)
   }
 }
 
+#' ripped from rappdirs (ty Hadley!)
 get_os <- function () {
   if (.Platform$OS.type == "windows") {
     "win"
