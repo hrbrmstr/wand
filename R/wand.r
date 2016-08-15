@@ -17,7 +17,7 @@
 #' @examples
 #' library(dplyr)
 #'
-#' system.file("extdata/img", package="filemagic") %>%
+#' system.file("extdata/img", package="wand") %>%
 #'   list.files(full.names=TRUE) %>%
 #'   incant() %>%
 #'   glimpse()
