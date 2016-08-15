@@ -5,8 +5,9 @@
 
 The `libmagic` library must be installed on \*nix/macOS and available to use this.
 
--   `apt-get install libmagic-dev` on Debian-ish systems
+-   `apt-get install libmagic-dev` on Ubuntu/Debian-ish systems
 -   `brew install libmagic` on macOS
+-   `yum install file-devel` on RHEL/CentOS/Fedora
 
 While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
 
@@ -105,7 +106,7 @@ library(testthat)
 date()
 ```
 
-    ## [1] "Mon Aug 15 11:54:15 2016"
+    ## [1] "Mon Aug 15 14:56:16 2016"
 
 ``` r
 test_dir("tests/")
