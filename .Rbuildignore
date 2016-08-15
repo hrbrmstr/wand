@@ -7,3 +7,4 @@
 ^NOTES\.*html$
 ^tools$
 ^cran-comments\.md$
+^builder$

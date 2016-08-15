@@ -1,1 +1,1 @@
-response <- encoding <- NULL
+extensions <- mime_type <- response <- encoding <- NULL

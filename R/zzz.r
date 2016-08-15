@@ -18,7 +18,7 @@
 #' @examples
 #' library(dplyr)
 #'
-#' system.file("img", package="filemagic") %>%
+#' system.file("extdata/img", package="filemagic") %>%
 #'   list.files(full.names=TRUE) %>%
 #'   incant(magic_wand_file()) %>%
 #'   glimpse()
@@ -32,7 +32,7 @@ magic_wand_file <- function(refresh=FALSE) {
   if (lib_version() >= 528) vers <- "new" else vers <- "old"
 
   if (refresh | (!file.exists(file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc")))) {
-    unzip(system.file("db", vers, "magic.mgc.zip", package="wand"),
+    unzip(system.file("extdata", "db", vers, "magic.mgc.zip", package="wand"),
                            exdir=cache, overwrite=TRUE)
   }
 

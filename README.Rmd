@@ -8,8 +8,9 @@ output: rmarkdown::github_document
 
 The `libmagic` library must be installed on *nix/macOS and available to use this. 
 
-- `apt-get install libmagic-dev` on Debian-ish systems
+- `apt-get install libmagic-dev` on Ubuntu/Debian-ish systems
 - `brew install libmagic` on macOS
+- `yum install file-devel` on RHEL/CentOS/Fedora
 
 While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
 
@@ -19,6 +20,10 @@ The following functions are implemented:
 
 - `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
 - `magic_wand_file` : provides a full path to the package-provided `magic` file
+
+The following datasets are included:
+
+- `mime_db` : a database of all mime types from <https://github.com/jshttp/mime-db>
 
 ### Installation
 
@@ -34,22 +39,34 @@ options(width=120)
 
 ```{r message=FALSE}
 library(wand)
-library(magrittr)
 library(dplyr)
 
-system.file("img", package="wand") %>% 
+system.file("extdata", "img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant() %>% 
   glimpse()
+```
 
+```{r message=FALSE}
 # Use a non-system magic-file
 
-system.file("img", package="wand") %>% 
+system.file("extdata", "img", package="wand") %>% 
   list.files(full.names=TRUE) %>% 
   incant(magic_wand_file()) %>% 
   select(description) %>% 
   unlist(use.names=FALSE)
+```
 
+```{r message=FALSE}
+# what kinds of extensions are associated with these mime types
+system.file("extdata", "img", package="wand") %>% 
+  list.files(full.names=TRUE) %>% 
+  incant(magic_wand_file()) %>% 
+  select(extensions) %>% 
+  as.data.frame()
+```
+
+```{r message=FALSE}
 # current verison
 packageVersion("wand")
 
