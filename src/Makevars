@@ -1,2 +1,0 @@
-PKG_CPPFLAGS= -L/usr/local/include
-PKG_LIBS= -L/usr/local/lib -L/usr/lib -lmagic

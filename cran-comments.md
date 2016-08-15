@@ -1,6 +1,6 @@
 ## Test environments
 * local OS X install, R 3.3.1
-* local Windows 10 install, R 3.3.0
+* local Windows 10 install, R 3.3.0 & R 3.3.1
 * ubuntu 14.04 (on travis-ci), R 3.3.1
 * win-builder (devel and release)
 
@@ -16,6 +16,6 @@ This is a new release, so there are no reverse dependencies.
 
 ---
 
-* For Unix/Linux the libmagic library is required
-* For Windows, Rtools 3.3 is required
-* Information on how to install those is found in the README.md document
+- For Unix/Linux the 'libmagic' library is *required*
+- For Windows, Rtools 3.3 is required (for the `file` cmd)
+- Information on how to install requirements is found in `INSTALL` & `README.md`
