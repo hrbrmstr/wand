@@ -3,6 +3,7 @@
 export(incant)
 export(magic_wand_file)
 import(purrr)
+import(stats)
 import(stringi)
 import(tibble)
 import(tidyr)

@@ -12,4 +12,5 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom utils unzip
 #' @importFrom dplyr mutate left_join
+#' @import stats
 NULL
