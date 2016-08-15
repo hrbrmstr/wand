@@ -6,3 +6,4 @@
 ^NOTES\.*Rmd$
 ^NOTES\.*html$
 ^tools$
+^cran-comments\.md$
