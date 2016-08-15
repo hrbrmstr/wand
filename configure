@@ -31,7 +31,7 @@ ccerr=$?
 
 rm ${temp_src} ${temp_exe}
 
-if [ "$ccerr" == 1 ] ; then
+if [ "$ccerr" = 1 ] ; then
   echo
   echo
   echo "The libmagic library was not found."
