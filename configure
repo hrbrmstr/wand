@@ -26,7 +26,7 @@ EOF
 
 temp_exe=$(mktemp)
 
-${CC} ${CFLAGS} ${CPPFLAGS} ${LD_FLAGS} ${CXXFLAGS} ${DYLIB_LDFLAGS} ${SHLIB_LDFLAGS} -L/usr/local/lib -L/opt/local/lib -L/usr/lib -lmagic -o ${temp_exe} ${temp_src} &> /dev/null
+${CC} ${CFLAGS} ${CPPFLAGS} ${LD_FLAGS} ${CXXFLAGS} ${DYLIB_LDFLAGS} ${SHLIB_LDFLAGS} -L/usr/local/lib -L/opt/local/lib -L/usr/lib -lmagic -o ${temp_exe} ${temp_src} > /dev/null 2>&1
 
 ccerr=$?
 
