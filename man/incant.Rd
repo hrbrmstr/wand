@@ -11,7 +11,8 @@ incant(path, magic_db = "system")
 
 \item{magic_db}{either "\code{system}" (the default) to use the system
 \code{magic} database or an atomic character vector with a
-colon-separated list of full paths to custom \code{magic} database(s).}
+colon-separated list of full paths to custom \code{magic} database(s). This parameter
+is (for the moment) ignored on Windows.}
 }
 \value{
 a \code{tibble} / \code{data.frame} of file magic attributes.
@@ -27,7 +28,6 @@ Various fields might not be available depending on the version
   of \code{libmagic} you have installed.
 }
 \examples{
-library(magrittr)
 library(dplyr)
 
 system.file("img", package="filemagic") \%>\%

@@ -42,6 +42,12 @@ DataFrame incant_(CharacterVector path, std::string magic_db="system") {
     mdb = mdbcpp.c_str();
   }
 
+  // This is "ugh" due to the fact that various versions of the libmagic
+  // library can't handle loading multiple "cookies" at the same time.
+  // So, we end up doing way too much extra work to get the individual
+  // bits of info. I may just switch this over to a single call (all the
+  // availabel flags) and do string parsing before pushing to CRAN.
+
   for (unsigned int i=0; i<input_size; i++) {
 
     if ((i % 10000) == 0) Rcpp::checkUserInterrupt();

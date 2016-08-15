@@ -10,9 +10,12 @@
 #'
 #' @param refresh ensure the lastest copy of the pacakge "magic"
 #'   database is used.
+#' @note 'magic' files are highly coupled with the version of the \code{file}
+#'   utility they were built with. This function is provided solely for the
+#'   off chance that a macOS or Linux/UNIX system's \code{libmagic} library
+#'   was not configured properly and cannot find the system 'magic' file.
 #' @export
 #' @examples
-#' library(magrittr)
 #' library(dplyr)
 #'
 #' system.file("img", package="filemagic") %>%
@@ -27,7 +30,6 @@ magic_wand_file <- function(refresh=FALSE) {
   if (!dir.exists(cache)) return(NULL)
 
   if (lib_version() >= 528) vers <- "new" else vers <- "old"
-  if (get_os() == "win") vers <- "win"
 
   if (refresh | (!file.exists(file.path(rappdirs::user_cache_dir("wandr"), "magic.mgc")))) {
     unzip(system.file("db", vers, "magic.mgc.zip", package="wand"),

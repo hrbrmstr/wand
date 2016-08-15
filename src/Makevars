@@ -1,8 +1,2 @@
 PKG_LIBS = -lmagic
 
-all: clean
-
-clean:
-	rm -f $(OBJECTS) wand.dll
-
-.PHONY: all clean

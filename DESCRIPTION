@@ -2,7 +2,7 @@ Package: wand
 Type: Package
 Title: Retrieve 'Magic' Attributes from Files and Directories
 Version: 0.2.0
-Date: 2016-08-13
+Date: 2016-08-14
 Author: Bob Rudis (@hrbrmstr), Christos Zoulas [libmagic]
 Maintainer: Bob Rudis <bob@rud.is>
 Description: The 'libmagic' library provides functions to determine
@@ -10,13 +10,12 @@ Description: The 'libmagic' library provides functions to determine
     attributes.
 URL: http://github.com/hrbrmstr/wand
 BugReports: https://github.com/hrbrmstr/wand/issues
-SystemRequirements: libmagic (>= 5.14)
+SystemRequirements: libmagic (>= 5.14) for Unix/Linux/macOS; Rtools 3.3+ for Windows
 License: AGPL
 Suggests:
-    testthat,
-    magrittr
+    testthat
 Depends:
-    R (>= 3.0.0)
+    R (>= 3.2.0)
 Imports:
     purrr,
     Rcpp,

@@ -19,8 +19,13 @@ return the full path to the magic file. Subsequent calls will not have to
 perform the decompression unless \code{force} is \code{TRUE} or the
 cache directory has been cleared.
 }
+\note{
+'magic' files are highly coupled with the version of the \code{file}
+  utility they were built with. This function is provided solely for the
+  off chance that a macOS or Linux/UNIX system's \code{libmagic} library
+  was not configured properly and cannot find the system 'magic' file.
+}
 \examples{
-library(magrittr)
 library(dplyr)
 
 system.file("img", package="filemagic") \%>\%

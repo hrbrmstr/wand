@@ -11,6 +11,6 @@
 #' @useDynLib wand
 #' @importFrom Rcpp sourceCpp
 #' @importFrom utils unzip
-#' @importFrom dplyr mutate left_join
+#' @importFrom dplyr mutate left_join mutate_all
 #' @import stats
 NULL
