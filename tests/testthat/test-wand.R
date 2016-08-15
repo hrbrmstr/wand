@@ -8,6 +8,6 @@ test_that("we can do something", {
   tmp <- unlist(tmp, use.names=FALSE)
   tmp <- sort(tmp)
 
-  expect_that(substr(tmp[8], 1, 3), equals("PNG"))
+  expect_that(any(substr(tmp, 1, 3) == "PNG"), equals(TRUE))
 
 })
