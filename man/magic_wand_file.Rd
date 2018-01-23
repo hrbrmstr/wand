@@ -33,4 +33,3 @@ system.file("extdata/img", package="wand") \%>\%
   incant(magic_wand_file()) \%>\%
   glimpse()
 }
-

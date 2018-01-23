@@ -39,4 +39,3 @@ system.file("extdata/img", package="wand") \%>\%
 See \url{http://openpreservation.org/blog/2012/08/09/magic-editing-and-creation-primer/}
   for information on how to create your own \code{magic} database
 }
-

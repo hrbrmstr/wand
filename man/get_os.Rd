@@ -9,4 +9,3 @@ get_os()
 \description{
 ripped from rappdirs (ty Hadley!)
 }
-

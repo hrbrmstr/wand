@@ -16,7 +16,7 @@
 #' @import tidyr
 #' @import stringi
 #' @importFrom rappdirs user_cache_dir
-#' @useDynLib wand
+#' @useDynLib wand, .registration=TRUE
 #' @importFrom Rcpp sourceCpp
 #' @importFrom utils unzip
 #' @importFrom dplyr mutate left_join mutate_all
