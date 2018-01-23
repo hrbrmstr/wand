@@ -1,16 +1,21 @@
 Package: wand
 Type: Package
 Title: Retrieve 'Magic' Attributes from Files and Directories
-Version: 0.2.0
-Date: 2016-08-14
-Author: Bob Rudis (@hrbrmstr), Christos Zoulas [libmagic], Mans Rullgard [file],
-  Jonathan Ong <me@jongleberry.com> [mime-db]
+Version: 0.2.1
+Date: 2017-10-20
+Authors@R: c(
+    person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
+           comment = c(ORCID = "0000-0001-5670-2640")),
+    person("Christos", "Zoulas", role=("ctb"), comment="libmagic"),
+    person("Mans", "Rullgard", role=("ctb"), comment="file"),
+    person("Jonathan", "Ong", role=("ctb"), comment="mime-db")
+  )
 Maintainer: Bob Rudis <bob@rud.is>
 Description: The 'libmagic' library provides functions to determine
     'MIME' type and other metadata from files through their "magic"
     attributes. This is useful when you do not wish to rely solely on
     the honesty of a user or the extension on a file name. It also
-    incorporates other metadata from the mime-db database
+    incorporates other metadata from the 'mime-db' database
     <https://github.com/jshttp/mime-db>.
 URL: http://github.com/hrbrmstr/wand
 BugReports: https://github.com/hrbrmstr/wand/issues
@@ -34,4 +39,4 @@ Imports:
     Rcpp
 Encoding: UTF-8
 LinkingTo: Rcpp
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1.9000

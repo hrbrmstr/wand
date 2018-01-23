@@ -37,4 +37,3 @@ Last updated 2016-08-14; the only guaranteed field is \code{source}
 Ingested from \url{https://github.com/jshttp/mime-db}.
 }
 \keyword{datasets}
-

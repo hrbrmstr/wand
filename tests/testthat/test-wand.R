@@ -1,5 +1,5 @@
-context("basic functionality")
-test_that("we can do something", {
+context("wand can correctly test files")
+test_that("a sample image file is identified correctly", {
 
   tmp <- incant(list.files(system.file("extdata", "img", package="wand"),
                            full.names=TRUE),
