@@ -14,7 +14,7 @@
 #' @return character vector
 #' @export
 #' @examples
-#' get_content_type(system.file("extdat", "test.pdf", package="simplemagic"))
+#' get_content_type(system.file("extdat", "test.pdf", package="wand"))
 get_content_type <- function(path) {
 
   path <- path.expand(path)

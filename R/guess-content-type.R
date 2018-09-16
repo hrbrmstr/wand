@@ -15,7 +15,7 @@
 #' @return character vector
 #' @export
 #' @examples
-#' guess_content_type(system.file("extdat", "test.pdf", package="simplemagic"))
+#' guess_content_type(system.file("extdat", "test.pdf", package="wand"))
 guess_content_type <- function(path) {
 
   path <- path.expand(path)

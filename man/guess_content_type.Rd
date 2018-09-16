@@ -24,5 +24,5 @@ Incorporates standard IANA MIME extension mappings and those from
 \href{https://s-randomfiles.s3.amazonaws.com/mime/allMimeTypes.json}{allMimeTypes.json}.
 }
 \examples{
-guess_content_type(system.file("extdat", "test.pdf", package="simplemagic"))
+guess_content_type(system.file("extdat", "test.pdf", package="wand"))
 }
