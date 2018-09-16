@@ -10,11 +10,18 @@ The 'libmagic' library provides functions to determine 'MIME' type and other
 metadata from files through their "magic" attributes. This is useful when you
 do not wish to rely solely on the honesty of a user or the extension on a
 file name. It also incorporates other metadata from the mime-db database
-<https://github.com/jshttp/mime-db>
+\url{https://github.com/jshttp/mime-db}
 }
-\details{
-Based on \code{file} / \code{libmagic} - \url{https://github.com/file/file}
+\section{Some important details}{
+
+
+The header checking is minimal (i.e. nowhere near as comprehensive as \code{libmagic}) but
+covers quite a bit of ground. If there are content-check types from
+\href{https://github.com/threatstack/libmagic/tree/master/magic/}{magic sources}
+that you would like coded into the package, please file an issue and
+\emph{include the full line(s)} from that linked \code{magic.tab} that you would like mapped.
 }
+
 \author{
-Bob Rudis (@hrbrmstr)
+Bob Rudis (bob@rud.is)
 }
