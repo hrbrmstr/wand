@@ -1,85 +1,70 @@
 ---
 output: rmarkdown::github_document
 ---
+
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) 
-[![Travis-CI Build Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand) 
+[![Travis-CIBuild Status](https://travis-ci.org/hrbrmstr/simplemagic.svg?branch=master)](https://travis-ci.org/hrbrmstr/simplemagic) 
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/simplemagic?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/simplemagic)
+[![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/simplemagic/master.svg)](https://codecov.io/github/hrbrmstr/simplemagic?branch=master) 
 
-`wand` : Retrieve 'Magic' Attributes from Files and Directories
+# wand
 
-The `libmagic` library must be installed on *nix/macOS and available to use this. 
+Lightweight File 'MIME' Type Detection Based On Contents or Extension
 
-- `apt-get install libmagic-dev` on Ubuntu/Debian-ish systems
-- `brew install libmagic` on macOS
-- `yum install file-devel` on RHEL/CentOS/Fedora
+## Description
 
-While the package was developed using the 5.28 version of `libmagic` it has been configured to work with older versions. Note that some fields in the resultant data frame might not be available with older library versions. When using the function `magic_wand_file()` it checks for which version of `libmagic` is installed on your system and provides a suitable `magic.mgc` file for it.
+'MIME' types are shorthand descriptors for file contents and can be
+determined from "magic" bytes in file headers, file contents or intuited from
+file extensions. Tools are provided to perform curated "magic" tests as well
+as mapping 'MIME' types from a database of over 1,500 extension mappings.
 
-The package also works on Windows but it's a bit of a hack because, well, _Windows_. The Windows version makes two `system2()` calls and relies on `Rtools` being installed and `file.exe` being available on the Windows `PATH`, so it's sub-optimal at best. Help to get it working in C would be greatly appreciated. Windows folk can go [here](https://github.com/stan-dev/rstan/wiki/Install-Rtools-for-Windows) to find out more info on `Rtools`.
+Provides a more portable/ligtweight alternative to the `wand` package.
+
+## SOME IMPORTANT DETAILS
+
+The header checking is minimal (i.e. nowhere near as comprehensive as `libmagic`) but covers quite a bit of ground. If there are content-check types from [`magic sources`](https://github.com/threatstack/libmagic/tree/master/magic/) that you would like coded into the package, please file an issue and _include the full line(s)_ from that linked `magic.tab` that you would like mapped.
+
+## What's Inside The Tin
+
+- `get_content_type`:	Discover MIME type of a file based on contents
+- `guess_content_type`:	Guess MIME type from filename (extension)
+- `simplemagic_mime_db`:	File extension-to-MIME mapping data frame
 
 The following functions are implemented:
 
-- `incant` : returns the "magic" metadata of the files in the input vector (as a data frame)
-- `magic_wand_file` : provides a full path to the package-provided `magic` file
-
-The following datasets are included:
-
-- `mime_db` : a database of all mime types from <https://github.com/jshttp/mime-db>
-
-### Installation
+## Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/wand")
+devtools::install_git("https://gitlab.com/hrbrmstr/wand")
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
 options(width=120)
 ```
 
-### Usage
+## Usage
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE, error=FALSE}
 library(wand)
-library(dplyr)
+library(tidyverse)
 
-system.file("extdata", "img", package="wand") %>% 
-  list.files(full.names=TRUE) %>% 
-  incant() %>% 
-  glimpse()
-```
-
-```{r message=FALSE}
-# Use a non-system magic-file
-
-system.file("extdata", "img", package="wand") %>% 
-  list.files(full.names=TRUE) %>% 
-  incant(magic_wand_file()) %>% 
-  select(description) %>% 
-  unlist(use.names=FALSE)
-```
-
-```{r message=FALSE}
-# what kinds of extensions are associated with these mime types
-system.file("extdata", "img", package="wand") %>% 
-  list.files(full.names=TRUE) %>% 
-  incant(magic_wand_file()) %>% 
-  select(extensions) %>% 
-  as.data.frame()
-```
-
-```{r message=FALSE}
 # current verison
 packageVersion("wand")
-
 ```
 
-### Test Results
-
-```{r message=FALSE}
-library(wand)
-library(testthat)
-
-date()
-
-test_dir("tests/")
+```{r}
+list.files(system.file("extdat", package="wand"), full.names=TRUE) %>% 
+  map_df(~{
+    data_frame(
+      fil = basename(.x),
+      mime = list(get_content_type(.x))
+    )
+  }) %>% 
+  unnest() %>% 
+  print(n=100)
 ```
+
+## Code of Conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
 

@@ -6,19 +6,17 @@
 #' file name. It also incorporates other metadata from the mime-db database
 #' <https://github.com/jshttp/mime-db>
 #'
-#' Based on \code{file} / \code{libmagic} - \url{https://github.com/file/file}
+#' @section Some important details:
 #'
+#' The header checking is minimal (i.e. nowhere near as comprehensive as `libmagic`) but
+#' covers quite a bit of ground. If there are content-check types from
+#' [`magic sources`](https://github.com/threatstack/libmagic/tree/master/magic/)
+#' that you would like coded into the package, please file an issue and
+#' _include the full line(s)_ from that linked `magic.tab` that you would like mapped.
+#'
+#' @md
 #' @name wand
 #' @docType package
-#' @author Bob Rudis (@@hrbrmstr)
-#' @import purrr
-#' @import tibble
-#' @import tidyr
-#' @import stringi
-#' @importFrom rappdirs user_cache_dir
-#' @useDynLib wand, .registration=TRUE
-#' @importFrom Rcpp sourceCpp
-#' @importFrom utils unzip
-#' @importFrom dplyr mutate left_join mutate_all
-#' @import stats
+#' @author Bob Rudis (bob@@rud.is)
+#' @importFrom tools file_ext
 NULL

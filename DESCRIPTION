@@ -1,42 +1,26 @@
 Package: wand
 Type: Package
 Title: Retrieve 'Magic' Attributes from Files and Directories
-Version: 0.2.1
-Date: 2017-10-20
+Version: 0.3.0
+Date: 2018-09-16
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
-           comment = c(ORCID = "0000-0001-5670-2640")),
-    person("Christos", "Zoulas", role=("ctb"), comment="libmagic"),
-    person("Mans", "Rullgard", role=("ctb"), comment="file"),
-    person("Jonathan", "Ong", role=("ctb"), comment="mime-db")
+           comment = c(ORCID = "0000-0001-5670-2640"))
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: The 'libmagic' library provides functions to determine
-    'MIME' type and other metadata from files through their "magic"
-    attributes. This is useful when you do not wish to rely solely on
-    the honesty of a user or the extension on a file name. It also
-    incorporates other metadata from the 'mime-db' database
-    <https://github.com/jshttp/mime-db>.
-URL: http://github.com/hrbrmstr/wand
-BugReports: https://github.com/hrbrmstr/wand/issues
-NeedsCompilation: yes
-LazyData: true
-SystemRequirements: libmagic (>= 5.14) for Unix/Linux/macOS; Rtools 3.3+ for Windows
+Description: 'MIME' types are shorthand descriptors for file contents and can be
+    determined from "magic" bytes in file headers, file contents or intuited from
+    file extensions. Tools are provided to perform curated "magic" tests as well
+    as mapping 'MIME' types from a database of over 1,500 extension mappings.
+URL: http://gitlab.com/hrbrmstr/wand
+BugReports: https://gitlab.com/hrbrmstr/wand/issues
+Encoding: UTF-8
 License: AGPL
 Suggests:
-    testthat
+    testthat,
+    covr
+Imports:
+    tools
 Depends:
     R (>= 3.2.0)
-Imports:
-    dplyr,
-    purrr,
-    rappdirs,
-    stats,
-    stringi,
-    tibble,
-    tidyr,
-    utils,
-    Rcpp
-Encoding: UTF-8
-LinkingTo: Rcpp
 RoxygenNote: 6.0.1.9000
