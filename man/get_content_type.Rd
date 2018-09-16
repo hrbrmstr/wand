@@ -23,5 +23,5 @@ Initial in-R header mapping logic borrowed from \code{MimeTypes.java} from
 \href{https://github.com/Servoy/servoy-client}{servoy-client}
 }
 \examples{
-get_content_type(system.file("extdat", "test.pdf", package="simplemagic"))
+get_content_type(system.file("extdat", "test.pdf", package="wand"))
 }
