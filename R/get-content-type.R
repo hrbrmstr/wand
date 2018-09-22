@@ -22,6 +22,9 @@ get_content_type <- function(path) {
 
   hdr <- readBin(path, "raw", n=1024)
 
+  if (all(c(0x4F,0x62,0x6A,0x01) == hdr[1:4])) return("application/vnd.apache.avro+binary")
+  if (all(c(0x50,0x41,0x52,0x31) == hdr[1:4])) return("application/x-parquet")
+
   if (all(c(0xCA,0xFE,0xBA,0xBE) == hdr[1:4])) return("application/java-vm")
 
   if (all(c(0xD0,0xCF,0x11,0xE0,0xA1,0xB1,0x1A,0xE1) == hdr[1:8])) {
@@ -43,6 +46,8 @@ get_content_type <- function(path) {
   if (all(c(0x49,0x44,0x33) == hdr[1:3])) return("audio/mp3")
   if (all(c(0xAC,0xED) == hdr[1:2])) return("application/x-java-serialized-object")
 
+  if (all(c(0x4c,0x5a,0x49,0x50) == hdr[1:4])) return("application/x-lzip")
+
   if (hdr[1] == 0x3c) { # "<"
     if (all(c(0x68,0x74,0x6d,0x6c) == hdr[2:5])) return("text/html") # "html"
     if (all(c(0x48,0x54,0x4d,0x4c) == hdr[2:5])) return("text/html") # "HTML"
@@ -50,6 +55,11 @@ get_content_type <- function(path) {
     if (all(c(0x68,0x65,0x61,0x64) == hdr[2:5])) return("text/html") # "head"
     if (all(c(0x3f,0x78,0x6d,0x6c,0x20) == hdr[2:6])) return("application/xml")
   }
+
+  if (all(c(0x0a,0x0d,0x0d,0x0a) == hdr[1:4])) "application/x-pcapng"
+
+  if (all(c(0xa1,0xb2,0xc3,0xd4) == hdr[1:4]) ||
+      all(c(0xd4,0xc3,0xb2,0xa1) == hdr[1:4])) return("application/x-cap")
 
   if (all(c(0xfe,0xff) == hdr[1:2])) {
     if (all(c(0x00,0x3c,0x00,0x3f,0x00,0x78) == hdr[3:8])) return("application/xml")
@@ -77,6 +87,7 @@ get_content_type <- function(path) {
     return("application/javascript")
 
   if (all(c(0xFF,0xD8,0xFF) == hdr[1:3])) {
+    if (0xDB == hdr[4]) return("image/jpeg")
     if (0xE0 == hdr[4]) return("image/jpeg")
     if (0xE1 == hdr[4]) {
       if (all(c(0x45,0x78,0x69,0x66,0x00) == hdr[7:11])) return("image/jpeg") # Exif
@@ -103,9 +114,19 @@ get_content_type <- function(path) {
 
   }
 
+  if (all(c(0x00,0x61,0x73,0x6d) == hdr[1:4])) return("application/wasm")
+
+  if (all(c(0x37,0x7A,0xBC,0xAF,0x27,0x1C) == hdr[1:6])) return("application/x-7z-compressed")
+
   if (all(c(0x5a,0x4d) == hdr[1:2])) return("x-system/exe")
 
-  if (all(c(0x75,0x73,0x74,0x61,0x72) == hdr[258:262])) return("application/pax")
+  if (all(c(0x75,0x73,0x74,0x61,0x72) == hdr[258:262])) {
+    if (all(c(0x00,0x30,0x30) == hdr[263:265]) || all(c(0x20,0x20,0x00) == hdr[263:265])) {
+      return("application/tar")
+    } else {
+      return("application/pax")
+    }
+  }
 
   if (all(c(0x00,0x00,0x01,0xBA) == hdr[1:4])) return("video/mpeg")
   if (all(c(0x00,0x00,0x01,0xB3) == hdr[1:4])) return("video/mpeg")

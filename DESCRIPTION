@@ -1,7 +1,7 @@
 Package: wand
 Type: Package
 Title: Retrieve 'Magic' Attributes from Files and Directories
-Version: 0.3.0
+Version: 0.4.0
 Date: 2018-09-16
 Authors@R: c(
     person("Bob", "Rudis", email = "bob@rud.is", role = c("aut", "cre"), 
