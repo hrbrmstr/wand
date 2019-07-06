@@ -1,8 +1,10 @@
 ---
-output: rmarkdown::github_document
+output: 
+  rmarkdown::github_document:
+    df_print: kable
 ---
 
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/0.1.0/active.svg)](http://www.repostatus.org/#active) 
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/0.1.0/active.svg)](https://www.repostatus.org/#active) 
 [![Travis-CIBuild Status](https://travis-ci.org/hrbrmstr/simplemagic.svg?branch=master)](https://travis-ci.org/hrbrmstr/simplemagic) 
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/simplemagic?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/simplemagic)
 [![Coverage Status](https://img.shields.io/codecov/c/github/hrbrmstr/simplemagic/master.svg)](https://codecov.io/github/hrbrmstr/simplemagic?branch=master) 
@@ -34,8 +36,8 @@ The following functions are implemented:
 
 ## Installation
 
-```{r eval=FALSE}
-devtools::install_git("https://gitlab.com/hrbrmstr/wand")
+```{r install-ex, results='asis', echo = FALSE}
+hrbrpkghelpr::install_block()
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
@@ -55,13 +57,18 @@ packageVersion("wand")
 ```{r}
 list.files(system.file("extdat", package="wand"), full.names=TRUE) %>% 
   map_df(~{
-    data_frame(
+    tibble(
       fil = basename(.x),
       mime = list(get_content_type(.x))
     )
   }) %>% 
-  unnest() %>% 
-  print(n=100)
+  unnest()
+```
+
+## Package Code Metrics
+
+```{r}
+cloc::cloc_pkg_md()
 ```
 
 ## Code of Conduct
