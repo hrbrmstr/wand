@@ -8,3 +8,5 @@
 ^tools$
 ^cran-comments\.md$
 ^builder$
+^\.vscode$
+^CRAN-RELEASE$
