@@ -50,6 +50,8 @@ devtools::install_git("https://git.rud.is/hrbrmstr/wand.git")
 # or
 devtools::install_git("https://git.sr.ht/~hrbrmstr/wand")
 # or
+devtools::install_gitlab("hrbrmstr/wand")
+# or
 devtools::install_bitbucket("hrbrmstr/wand")
 # or
 devtools::install_github("hrbrmstr/wand")
