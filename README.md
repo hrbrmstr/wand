@@ -21,8 +21,6 @@ from file extensions. Tools are provided to perform curated “magic”
 tests as well as mapping ‘MIME’ types from a database of over 1,500
 extension mappings.
 
-Provides a more portable/ligtweight alternative to the `wand` package.
-
 ## SOME IMPORTANT DETAILS
 
 The header checking is minimal (i.e. nowhere near as comprehensive as
@@ -171,11 +169,11 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 cloc::cloc_pkg_md()
 ```
 
-| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
-| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        7 | 0.78 | 949 | 0.91 |          52 | 0.69 |       62 | 0.61 |
-| JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.00 |        0 | 0.00 |
-| Rmd  |        1 | 0.11 |  14 | 0.01 |          23 | 0.31 |       40 | 0.39 |
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines | (%) | \# Lines |  (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | --: | -------: | ---: |
+| R    |        7 | 0.78 | 949 | 0.91 |          52 | 0.7 |       62 | 0.62 |
+| JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.0 |        0 | 0.00 |
+| Rmd  |        1 | 0.11 |  15 | 0.01 |          22 | 0.3 |       38 | 0.38 |
 
 ## Code of Conduct
 
