@@ -11,6 +11,6 @@
 
 ---
 
+Removed README per Uwe
 Update per Dr Ripley note re: Solaris
 Removed legitimate tests causing previous CRAN update submission issue.
-

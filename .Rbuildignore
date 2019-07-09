@@ -4,6 +4,7 @@
 ^README\.Rmd$
 ^README\.*html$
 ^NOTES\.*Rmd$
+^README\.md$
 ^NOTES\.*html$
 ^tools$
 ^cran-comments\.md$

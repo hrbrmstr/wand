@@ -1,3 +1,7 @@
+# 0.5.0
+- {tidytest}
+- CRAN release
+
 # 0.4.0
 - Enhanced jpeg detection
 - Added distinction between pax and tar
