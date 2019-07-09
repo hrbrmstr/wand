@@ -20,17 +20,15 @@ determined from "magic" bytes in file headers, file contents or intuited from
 file extensions. Tools are provided to perform curated "magic" tests as well
 as mapping 'MIME' types from a database of over 1,500 extension mappings.
 
-Provides a more portable/ligtweight alternative to the `wand` package.
-
 ## SOME IMPORTANT DETAILS
 
 The header checking is minimal (i.e. nowhere near as comprehensive as `libmagic`) but covers quite a bit of ground. If there are content-check types from [`magic sources`](https://github.com/threatstack/libmagic/tree/master/magic/) that you would like coded into the package, please file an issue and _include the full line(s)_ from that linked `magic.tab` that you would like mapped.
 
 ## What's Inside The Tin
 
-- `get_content_type`:	Discover MIME type of a file based on contents
-- `guess_content_type`:	Guess MIME type from filename (extension)
-- `simplemagic_mime_db`:	File extension-to-MIME mapping data frame
+```{r ingredients, results='asis', echo=FALSE}
+hrbrpkghelpr::describe_ingredients()
+```
 
 The following functions are implemented:
 
