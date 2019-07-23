@@ -8,6 +8,8 @@ by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keyb
 %](https://img.shields.io/badge/Signed_Commits-20.9%25-lightgrey.svg)
 [![Linux build
 Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
+[![Windows build
+status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/wand?svg=true)](https://ci.appveyor.com/project/hrbrmstr/wand)
 [![Coverage
 Status](https://codecov.io/gh/hrbrmstr/wand/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/wand)
 [![cran
@@ -178,9 +180,9 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        7 | 0.78 | 949 | 0.90 |          52 | 0.71 |       62 | 0.64 |
+| R    |        7 | 0.78 | 949 | 0.90 |          52 | 0.72 |       62 | 0.65 |
 | JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.00 |        0 | 0.00 |
-| Rmd  |        1 | 0.11 |  23 | 0.02 |          21 | 0.29 |       35 | 0.36 |
+| Rmd  |        1 | 0.11 |  23 | 0.02 |          20 | 0.28 |       34 | 0.35 |
 
 ## Code of Conduct
 
