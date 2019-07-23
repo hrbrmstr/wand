@@ -5,7 +5,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Signed
 by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr)
 ![Signed commit
-%](https://img.shields.io/badge/Signed_Commits-20.9%25-lightgrey.svg)
+%](https://img.shields.io/badge/Signed_Commits-24.4%25-lightgrey.svg)
 [![Linux build
 Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
 [![Windows build
@@ -180,9 +180,9 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        7 | 0.78 | 949 | 0.90 |          52 | 0.72 |       62 | 0.65 |
+| R    |        7 | 0.78 | 949 | 0.91 |          52 | 0.72 |       62 | 0.65 |
 | JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.00 |        0 | 0.00 |
-| Rmd  |        1 | 0.11 |  23 | 0.02 |          20 | 0.28 |       34 | 0.35 |
+| Rmd  |        1 | 0.11 |  16 | 0.02 |          20 | 0.28 |       34 | 0.35 |
 
 ## Code of Conduct
 

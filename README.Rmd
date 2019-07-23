@@ -4,14 +4,7 @@ output:
     df_print: kable
 ---
 ```{r pkg-knitr-opts, include=FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE, 
-  fig.retina = 1, 
-  message = FALSE, 
-  warning = FALSE,
-  fig.path = "man/figures/README-"
-)
-options(width=120)
+hrbrpkghelpr::global_opts()
 ```
 
 ```{r badges, results='asis', echo=FALSE, cache=FALSE}
@@ -33,7 +26,7 @@ The header checking is minimal (i.e. nowhere near as comprehensive as `libmagic`
 
 ## What's Inside The Tin
 
-```{r ingredients, results='asis', echo=FALSE}
+```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
 hrbrpkghelpr::describe_ingredients()
 ```
 
@@ -41,13 +34,13 @@ The following functions are implemented:
 
 ## Installation
 
-```{r install-ex, results='asis', echo = FALSE}
+```{r install-ex, results='asis', echo=FALSE, cache=FALSE}
 hrbrpkghelpr::install_block()
 ```
 
 ## Usage
 
-```{r vers, message=FALSE, warning=FALSE, error=FALSE}
+```{r vers, message=FALSE, warning=FALSE, error=FALSE, cache=FALSE}
 library(wand)
 library(tidyverse)
 
