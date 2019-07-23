@@ -1,13 +1,22 @@
 
-[![Project Status: Active - The project has reached a stable, usable
+[![Project Status: Active – The project has reached a stable, usable
 state and is being actively
-developed.](https://www.repostatus.org/badges/0.1.0/active.svg)](https://www.repostatus.org/#active)
-[![Travis-CIBuild
-Status](https://travis-ci.org/hrbrmstr/simplemagic.svg?branch=master)](https://travis-ci.org/hrbrmstr/simplemagic)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/hrbrmstr/simplemagic?branch=master&svg=true)](https://ci.appveyor.com/project/hrbrmstr/simplemagic)
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Signed
+by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr)
+![Signed commit
+%](https://img.shields.io/badge/Signed_Commits-20.9%25-lightgrey.svg)
+[![Linux build
+Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
 [![Coverage
-Status](https://img.shields.io/codecov/c/github/hrbrmstr/simplemagic/master.svg)](https://codecov.io/github/hrbrmstr/simplemagic?branch=master)
+Status](https://codecov.io/gh/hrbrmstr/wand/branch/master/graph/badge.svg)](https://codecov.io/gh/hrbrmstr/wand)
+[![cran
+checks](https://cranchecks.info/badges/worst/wand)](https://cranchecks.info/pkgs/wand)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/wand)](https://www.r-pkg.org/pkg/wand)
+![Minimal R
+Version](https://img.shields.io/badge/R%3E%3D-3.2.0-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
 # wand
 
@@ -44,16 +53,19 @@ The following functions are implemented:
 ``` r
 install.packages("wand", repos = "https://cinc.rud.is")
 # or
-devtools::install_git("https://git.rud.is/hrbrmstr/wand.git")
+remotes::install_git("https://git.rud.is/hrbrmstr/wand.git")
 # or
-devtools::install_git("https://git.sr.ht/~hrbrmstr/wand")
+remotes::install_git("https://git.sr.ht/~hrbrmstr/wand")
 # or
-devtools::install_gitlab("hrbrmstr/wand")
+remotes::install_gitlab("hrbrmstr/wand")
 # or
-devtools::install_bitbucket("hrbrmstr/wand")
+remotes::install_bitbucket("hrbrmstr/wand")
 # or
-devtools::install_github("hrbrmstr/wand")
+remotes::install_github("hrbrmstr/wand")
 ```
+
+NOTE: To use the ‘remotes’ install options you will need to have the
+[{remotes} package](https://github.com/r-lib/remotes) installed.
 
 ## Usage
 
@@ -63,9 +75,8 @@ library(tidyverse)
 
 # current verison
 packageVersion("wand")
+## [1] '0.5.0'
 ```
-
-    ## [1] '0.5.0'
 
 ``` r
 list.files(system.file("extdat", package="wand"), full.names=TRUE) %>% 
@@ -163,20 +174,16 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 </div>
 
-## Package Code Metrics
+## cloc Metrics
 
-``` r
-cloc::cloc_pkg_md()
-```
-
-| Lang | \# Files |  (%) | LoC |  (%) | Blank lines | (%) | \# Lines |  (%) |
-| :--- | -------: | ---: | --: | ---: | ----------: | --: | -------: | ---: |
-| R    |        7 | 0.78 | 949 | 0.91 |          52 | 0.7 |       62 | 0.62 |
-| JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.0 |        0 | 0.00 |
-| Rmd  |        1 | 0.11 |  15 | 0.01 |          22 | 0.3 |       38 | 0.38 |
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
+| R    |        7 | 0.78 | 949 | 0.90 |          52 | 0.71 |       62 | 0.64 |
+| JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.00 |        0 | 0.00 |
+| Rmd  |        1 | 0.11 |  23 | 0.02 |          21 | 0.29 |       35 | 0.36 |
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Please note that this project is released with a Contributor Code of
+Conduct. By participating in this project you agree to abide by its
+terms.
