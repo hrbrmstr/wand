@@ -17,7 +17,7 @@
 #' get_content_type(system.file("extdat", "test.pdf", package="wand"))
 get_content_type <- function(path, ...) {
 
-  path <- path.expand(path)
+  path <- path.expand(path[1])
   if (!file.exists(path)) stop("File not found.", call.=FALSE)
 
   hdr <- readBin(path, "raw", n=1024)

@@ -19,7 +19,7 @@
 #' guess_content_type(system.file("extdat", "test.pdf", package="wand"))
 guess_content_type <- function(path, not_found = "???", custom_db = NULL) {
 
-  path <- path.expand(path)
+  path <- path.expand(path[1])
   if (!file.exists(path)) stop("File not found.", call.=FALSE)
 
   if (is.null(custom_db)) {

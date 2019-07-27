@@ -14,7 +14,7 @@ Description: MIME types are shorthand descriptors for
       perform curated "magic" tests as well as mapping
       MIME types from a database of over 1,800
       extension mappings.
-URL: http://gitlab.com/hrbrmstr/wand
+URL: https://gitlab.com/hrbrmstr/wand
 BugReports: https://gitlab.com/hrbrmstr/wand/issues
 Encoding: UTF-8
 License: MIT + file LICENSE
