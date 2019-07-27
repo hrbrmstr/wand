@@ -8,7 +8,7 @@
 #' @param path path to file
 #' @param not_found MIME type to use when the content cannot be guessed by
 #'        file type.
-#' @param custom_dbs a single data frames each with two columns:
+#' @param custom_db a single data frames each with two columns:
 #'        `mime_type` and `extension`. These sources will be used along with
 #'        the built-in sources and will take priority over the built-in sources.
 #'        Note that the `extension`s should be lower case as they are in the

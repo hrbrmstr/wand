@@ -12,7 +12,7 @@ guess_content_type(path, not_found = "???", custom_db = NULL)
 \item{not_found}{MIME type to use when the content cannot be guessed by
 file type.}
 
-\item{custom_dbs}{a single data frames each with two columns:
+\item{custom_db}{a single data frames each with two columns:
 \code{mime_type} and \code{extension}. These sources will be used along with
 the built-in sources and will take priority over the built-in sources.
 Note that the \code{extension}s should be lower case as they are in the
