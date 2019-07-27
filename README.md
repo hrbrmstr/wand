@@ -5,7 +5,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Signed
 by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr)
 ![Signed commit
-%](https://img.shields.io/badge/Signed_Commits-24.4%25-lightgrey.svg)
+%](https://img.shields.io/badge/Signed_Commits-26.1%25-lightgrey.svg)
 [![Linux build
 Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
 [![Windows build
@@ -22,14 +22,14 @@ Version](https://img.shields.io/badge/R%3E%3D-3.2.0-blue.svg)
 
 # wand
 
-Lightweight File ‘MIME’ Type Detection Based On Contents or Extension
+Retrieve Magic Attributes from Files and Directories
 
 ## Description
 
-‘MIME’ types are shorthand descriptors for file contents and can be
+MIME types are shorthand descriptors for file contents and can be
 determined from “magic” bytes in file headers, file contents or intuited
 from file extensions. Tools are provided to perform curated “magic”
-tests as well as mapping ‘MIME’ types from a database of over 1,500
+tests as well as mapping MIME types from a database of over 1,800
 extension mappings.
 
 ## SOME IMPORTANT DETAILS
@@ -77,7 +77,7 @@ library(tidyverse)
 
 # current verison
 packageVersion("wand")
-## [1] '0.5.0'
+## [1] '0.6.0'
 ```
 
 ``` r
@@ -120,11 +120,13 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 | test.bmp                      | image/bmp                                                                 |
 | test.dtd                      | application/xml-dtd                                                       |
 | test.emf                      | application/x-msmetafile                                                  |
+| test.emf                      | image/emf                                                                 |
 | test.eps                      | application/postscript                                                    |
 | test.fli                      | video/flc                                                                 |
 | test.fli                      | video/fli                                                                 |
 | test.fli                      | video/x-fli                                                               |
 | test.gif                      | image/gif                                                                 |
+| test.ico                      | image/vnd.microsoft.icon                                                  |
 | test.ico                      | image/x-icon                                                              |
 | test.jpg                      | image/jpeg                                                                |
 | test.mp3                      | audio/mp3                                                                 |
@@ -132,8 +134,10 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 | test.ogg                      | application/ogg                                                           |
 | test.ogg                      | audio/ogg                                                                 |
 | test.pcx                      | image/pcx                                                                 |
+| test.pcx                      | image/vnd.zbrush.pcx                                                      |
 | test.pcx                      | image/x-pcx                                                               |
 | test.pdf                      | application/pdf                                                           |
+| test.pl                       | application/x-perl                                                        |
 | test.pl                       | text/plain                                                                |
 | test.pl                       | text/x-perl                                                               |
 | test.pl                       | text/x-script.perl                                                        |
@@ -156,16 +160,19 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 | test.sh                       | text/x-script.sh                                                          |
 | test.sh                       | text/x-sh                                                                 |
 | test.tar                      | application/tar                                                           |
+| test.tar.gz                   | application/gzip                                                          |
 | test.tar.gz                   | application/octet-stream                                                  |
 | test.tar.gz                   | application/x-compressed                                                  |
 | test.tar.gz                   | application/x-gzip                                                        |
 | test.tga                      | image/x-tga                                                               |
 | test.txt                      | text/plain                                                                |
+| test.txt.gz                   | application/gzip                                                          |
 | test.txt.gz                   | application/octet-stream                                                  |
 | test.txt.gz                   | application/x-compressed                                                  |
 | test.txt.gz                   | application/x-gzip                                                        |
 | test.wav                      | audio/x-wav                                                               |
 | test.wmf                      | application/x-msmetafile                                                  |
+| test.wmf                      | image/wmf                                                                 |
 | test.wmf                      | windows/metafile                                                          |
 | test.xcf                      | application/x-xcf                                                         |
 | test.xml                      | application/xml                                                           |
@@ -180,9 +187,9 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        7 | 0.78 | 949 | 0.91 |          52 | 0.72 |       62 | 0.65 |
-| JSON |        1 | 0.11 |  80 | 0.08 |           0 | 0.00 |        0 | 0.00 |
-| Rmd  |        1 | 0.11 |  16 | 0.02 |          20 | 0.28 |       34 | 0.35 |
+| R    |        7 | 0.78 | 154 | 0.61 |          59 | 0.78 |       70 | 0.69 |
+| JSON |        1 | 0.11 |  80 | 0.32 |           0 | 0.00 |        0 | 0.00 |
+| Rmd  |        1 | 0.11 |  17 | 0.07 |          17 | 0.22 |       31 | 0.31 |
 
 ## Code of Conduct
 

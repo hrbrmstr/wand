@@ -4,24 +4,27 @@
 \alias{guess_content_type}
 \title{Guess MIME type from filename (extension)}
 \usage{
-guess_content_type(path)
+guess_content_type(path, not_found = "???", custom_db = NULL)
 }
 \arguments{
 \item{path}{path to file}
+
+\item{not_found}{MIME type to use when the content cannot be guessed by
+file type.}
+
+\item{custom_dbs}{a single data frames each with two columns:
+\code{mime_type} and \code{extension}. These sources will be used along with
+the built-in sources and will take priority over the built-in sources.
+Note that the \code{extension}s should be lower case as they are in the
+official MIME database.}
 }
 \value{
 character vector
 }
 \description{
-Uses an internal database of over 1,500 file extension-to-MIME mappings to
+Uses an internal database of over 1,800 file extension-to-MIME mappings to
 return one or more associated types for a given input path. If no match is
 found, \code{???} is returned.
-}
-\details{
-Incorporates standard IANA MIME extension mappings and those from
-\href{https://github.com/Servoy/servoy-client}{servoy-client} and
-\href{https://github.com/stevenwdv}{stevenwdv}'s
-\href{https://s-randomfiles.s3.amazonaws.com/mime/allMimeTypes.json}{allMimeTypes.json}.
 }
 \examples{
 guess_content_type(system.file("extdat", "test.pdf", package="wand"))

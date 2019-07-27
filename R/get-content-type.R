@@ -1,21 +1,21 @@
 #' Discover MIME type of a file based on contents
 #'
 #' There are a limited number of header "magic" bytes checked directly by
-#' this function but cover quite a bit of ground. After that, [guess_content_type()] is called which uses
-#' file extension-to-MIME mappings. File an issue or PR if more magic-byte-level
-#' comparisons are required/desired. If no match is found, `???` is returned.
+#' this function but cover quite a bit of ground. After that, [guess_content_type()]
+#' is called which uses file extension-to-MIME mappings.
 #'
-#' @details
-#' Initial in-R header mapping logic borrowed from `MimeTypes.java` from
-#' [`servoy-client`](https://github.com/Servoy/servoy-client)
+#' File an issue or PR if more magic-byte-level
+#' comparisons are required/desired. If no match is found, `???` is returned
+#' (see [guess_content_type()] for how to override this behaviour).
 #'
 #' @md
 #' @param path path to a file
+#' @param ... passed on to [guess_content_type()]
 #' @return character vector
 #' @export
 #' @examples
 #' get_content_type(system.file("extdat", "test.pdf", package="wand"))
-get_content_type <- function(path) {
+get_content_type <- function(path, ...) {
 
   path <- path.expand(path)
   if (!file.exists(path)) stop("File not found.", call.=FALSE)
@@ -132,6 +132,6 @@ get_content_type <- function(path) {
   if (all(c(0x00,0x00,0x01,0xB3) == hdr[1:4])) return("video/mpeg")
 
 
-  return(guess_content_type(path))
+  return(guess_content_type(path, ...))
 
 }

@@ -11,14 +11,9 @@ hrbrpkghelpr::global_opts()
 hrbrpkghelpr::stinking_badges()
 ```
 
-# wand
-
-Lightweight File 'MIME' Type Detection Based On Contents or Extension
-
-## Description
-
-'MIME' types are shorthand descriptors for file contents and can be
-determined from "magic" bytes in file headers, file contents or intuited from file extensions. Tools are provided to perform curated "magic" tests as well as mapping 'MIME' types from a database of over 1,500 extension mappings.
+```{r description, results='asis', echo=FALSE, cache=FALSE}
+hrbrpkghelpr::yank_title_and_description()
+```
 
 ## SOME IMPORTANT DETAILS
 

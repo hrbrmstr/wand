@@ -1,19 +1,18 @@
 Package: wand
 Type: Package
-Title: Retrieve 'Magic' Attributes from Files and
+Title: Retrieve Magic Attributes from Files and
       Directories
-Version: 0.5.0
-Date: 2019-07-06
+Version: 0.6.0
+Date: 2019-07-27
 Authors@R: c( person("Bob", "Rudis", email =
       "bob@rud.is", role = c("aut", "cre"), comment =
       c(ORCID = "0000-0001-5670-2640")) )
-Maintainer: Bob Rudis <bob@rud.is>
-Description: 'MIME' types are shorthand descriptors for
+Description: MIME types are shorthand descriptors for
       file contents and can be determined from "magic"
       bytes in file headers, file contents or intuited
       from file extensions. Tools are provided to
       perform curated "magic" tests as well as mapping
-      'MIME' types from a database of over 1,500
+      MIME types from a database of over 1,800
       extension mappings.
 URL: http://gitlab.com/hrbrmstr/wand
 BugReports: https://gitlab.com/hrbrmstr/wand/issues

@@ -4,23 +4,25 @@
 \alias{get_content_type}
 \title{Discover MIME type of a file based on contents}
 \usage{
-get_content_type(path)
+get_content_type(path, ...)
 }
 \arguments{
 \item{path}{path to a file}
+
+\item{...}{passed on to \code{\link[=guess_content_type]{guess_content_type()}}}
 }
 \value{
 character vector
 }
 \description{
 There are a limited number of header "magic" bytes checked directly by
-this function but cover quite a bit of ground. After that, \code{\link[=guess_content_type]{guess_content_type()}} is called which uses
-file extension-to-MIME mappings. File an issue or PR if more magic-byte-level
-comparisons are required/desired. If no match is found, \code{???} is returned.
+this function but cover quite a bit of ground. After that, \code{\link[=guess_content_type]{guess_content_type()}}
+is called which uses file extension-to-MIME mappings.
 }
 \details{
-Initial in-R header mapping logic borrowed from \code{MimeTypes.java} from
-\href{https://github.com/Servoy/servoy-client}{servoy-client}
+File an issue or PR if more magic-byte-level
+comparisons are required/desired. If no match is found, \code{???} is returned
+(see \code{\link[=guess_content_type]{guess_content_type()}} for how to override this behaviour).
 }
 \examples{
 get_content_type(system.file("extdat", "test.pdf", package="wand"))

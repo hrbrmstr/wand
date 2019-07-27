@@ -2,5 +2,4 @@
 
 export(get_content_type)
 export(guess_content_type)
-export(simplemagic_mime_db)
 importFrom(tools,file_ext)

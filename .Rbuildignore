@@ -11,3 +11,5 @@
 ^builder$
 ^\.vscode$
 ^CRAN-RELEASE$
+^appveyor\.yml$
+^tools$

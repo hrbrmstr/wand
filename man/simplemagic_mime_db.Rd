@@ -4,11 +4,16 @@
 \name{simplemagic_mime_db}
 \alias{simplemagic_mime_db}
 \title{File extension-to-MIME mapping data frame}
-\format{An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1763 rows and 2 columns.}
-\usage{
-simplemagic_mime_db
-}
 \description{
-File extension-to-MIME mapping data frame
+built from the files found in the References
+}
+\note{
+Last updated 2019-07-27.
+}
+\references{
+- <https://tools.ietf.org/html/rfc6838>
+    - <https://www.iana.org/assignments/media-types/media-types.xhtml>
+    - <https://s-randomfiles.s3.amazonaws.com/mime/allMimeTypes.json>
+    - <https://cdn.jsdelivr.net/gh/jshttp/mime-db@master/db.json>
 }
 \keyword{datasets}
