@@ -5,7 +5,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![Signed
 by](https://img.shields.io/badge/Keybase-Verified-brightgreen.svg)](https://keybase.io/hrbrmstr)
 ![Signed commit
-%](https://img.shields.io/badge/Signed_Commits-26.1%25-lightgrey.svg)
+%](https://img.shields.io/badge/Signed_Commits-100%25-lightgrey.svg)
 [![Linux build
 Status](https://travis-ci.org/hrbrmstr/wand.svg?branch=master)](https://travis-ci.org/hrbrmstr/wand)
 [![Windows build
@@ -44,11 +44,11 @@ like mapped.
 
 ## What’s Inside The Tin
 
+The following functions are implemented:
+
   - `get_content_type`: Discover MIME type of a file based on contents
   - `guess_content_type`: Guess MIME type from filename (extension)
   - `simplemagic_mime_db`: File extension-to-MIME mapping data frame
-
-The following functions are implemented:
 
 ## Installation
 
@@ -183,7 +183,7 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 </div>
 
-## cloc Metrics
+## wand Metrics
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
