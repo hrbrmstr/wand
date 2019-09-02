@@ -76,7 +76,7 @@ packages:
 environment:
   R_PACKAGE: wand
 sources:
-  - https://git.sr.ht/hrbrmstr/wand
+  - https://git.sr.ht/~hrbrmstr/wand
 tasks:
   - setup: |
       echo "en_US.UTF-8 UTF-8" > loc
