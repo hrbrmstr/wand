@@ -1,0 +1,78 @@
+image: debian/buster
+packages:
+  - bash-completion
+  - bison
+  - debhelper
+  - default-jdk
+  - g++
+  - gcc
+  - gdb
+  - gfortran
+  - groff-base
+  - libblas-dev
+  - libbz2-dev
+  - libcairo2-dev
+  - libcurl4-openssl-dev
+  - libjpeg-dev
+  - liblapack-dev
+  - liblzma-dev
+  - libncurses5-dev
+  - libpango1.0-dev
+  - libpcre3-dev
+  - libpng-dev
+  - libreadline-dev
+  - libtiff5-dev
+  - libx11-dev
+  - libxt-dev
+  - mpack
+  - subversion
+  - tcl8.6-dev
+  - texinfo
+  - texlive-base
+  - texlive-extra-utils
+  - texlive-fonts-extra
+  - texlive-fonts-recommended
+  - texlive-generic-recommended
+  - texlive-latex-base
+  - texlive-latex-extra
+  - texlive-latex-recommended
+  - tk8.6-dev
+  - x11proto-core-dev
+  - xauth
+  - xdg-utils
+  - xfonts-base
+  - xvfb
+  - zlib1g-dev
+  - ed
+  - less
+  - locales
+  - vim-tiny
+  - wget
+  - ca-certificates
+  - fonts-texgyre
+  - libssl-dev
+  - libcurl4-openssl-dev
+  - r-base
+  - r-base-dev
+  - r-recommended
+sources:
+  - https://git.sr.ht/~hrbrmstr/wand
+triggers:
+  - action: email
+    condition: always
+    to: bob@rud.is
+tasks:
+  - setup: |
+      sudo update-locale "LANG=en_US.UTF-8"
+      sudo locale-gen --purge "en_US.UTF-8"
+      sudo dpkg-reconfigure --frontend noninteractive locales
+      export LC_ALL=en_US.UTF-8
+      export LANG=en_US.UTF-8
+      export LANGUAGE=en_US.UTF-8
+      echo 'options(repos = c(CRAN = "https://cloud.r-project.org"))' > ~/.Rprofile
+      echo 'R_LIBS_USER=/home/build/packages' > ~/.Renviron
+      mkdir /home/build/packages
+      Rscript -e 'install.packages(c("covr", "tinytest"))'
+  - build: |
+      R CMD build wand
+      R CMD check wand_*gz

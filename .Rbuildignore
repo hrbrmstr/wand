@@ -13,3 +13,4 @@
 ^CRAN-RELEASE$
 ^appveyor\.yml$
 ^tools$
+^\.build\.yml$

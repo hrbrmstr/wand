@@ -21,11 +21,11 @@ The header checking is minimal (i.e. nowhere near as comprehensive as `libmagic`
 
 ## What's Inside The Tin
 
+The following functions are implemented:
+
 ```{r ingredients, results='asis', echo=FALSE, cache=FALSE}
 hrbrpkghelpr::describe_ingredients()
 ```
-
-The following functions are implemented:
 
 ## Installation
 
@@ -54,7 +54,7 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
   unnest()
 ```
 
-## cloc Metrics
+## wand Metrics
 
 ```{r cloc, echo=FALSE}
 cloc::cloc_pkg_md()
