@@ -1,7 +1,5 @@
 ---
-output: 
-  rmarkdown::github_document:
-    df_print: kable
+output: rmarkdown::github_document
 ---
 ```{r pkg-knitr-opts, include=FALSE}
 hrbrpkghelpr::global_opts()

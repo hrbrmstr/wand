@@ -91,108 +91,29 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
     )
   }) %>% 
   unnest()
+## # A tibble: 85 x 2
+##    fil                        mime                                                             
+##    <chr>                      <chr>                                                            
+##  1 actions.csv                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##  2 actions.txt                application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##  3 actions.xlsx               application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+##  4 test_128_44_jstereo.mp3    audio/mp3                                                        
+##  5 test_excel_2000.xls        application/msword                                               
+##  6 test_excel_spreadsheet.xml application/xml                                                  
+##  7 test_excel_web_archive.mht message/rfc822                                                   
+##  8 test_excel.xlsm            application/zip                                                  
+##  9 test_excel.xlsx            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+## 10 test_nocompress.tif        image/tiff                                                       
+## # … with 75 more rows
 ```
-
-<div class="kable-table">
-
-| fil                           | mime                                                                      |
-| :---------------------------- | :------------------------------------------------------------------------ |
-| actions.csv                   | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet         |
-| actions.txt                   | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet         |
-| actions.xlsx                  | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet         |
-| test\_128\_44\_jstereo.mp3    | audio/mp3                                                                 |
-| test\_excel\_2000.xls         | application/msword                                                        |
-| test\_excel\_spreadsheet.xml  | application/xml                                                           |
-| test\_excel\_web\_archive.mht | message/rfc822                                                            |
-| test\_excel.xlsm              | application/zip                                                           |
-| test\_excel.xlsx              | application/vnd.openxmlformats-officedocument.spreadsheetml.sheet         |
-| test\_nocompress.tif          | image/tiff                                                                |
-| test\_powerpoint.pptm         | application/zip                                                           |
-| test\_powerpoint.pptx         | application/vnd.openxmlformats-officedocument.presentationml.presentation |
-| test\_word\_2000.doc          | application/msword                                                        |
-| test\_word\_6.0\_95.doc       | application/msword                                                        |
-| test\_word.docm               | application/zip                                                           |
-| test\_word.docx               | application/vnd.openxmlformats-officedocument.wordprocessingml.document   |
-| test.au                       | audio/basic                                                               |
-| test.bin                      | application/mac-binary                                                    |
-| test.bin                      | application/macbinary                                                     |
-| test.bin                      | application/octet-stream                                                  |
-| test.bin                      | application/x-binary                                                      |
-| test.bin                      | application/x-macbinary                                                   |
-| test.bmp                      | image/bmp                                                                 |
-| test.dtd                      | application/xml-dtd                                                       |
-| test.emf                      | application/x-msmetafile                                                  |
-| test.emf                      | image/emf                                                                 |
-| test.eps                      | application/postscript                                                    |
-| test.fli                      | video/flc                                                                 |
-| test.fli                      | video/fli                                                                 |
-| test.fli                      | video/x-fli                                                               |
-| test.gif                      | image/gif                                                                 |
-| test.ico                      | image/vnd.microsoft.icon                                                  |
-| test.ico                      | image/x-icon                                                              |
-| test.jpg                      | image/jpeg                                                                |
-| test.mp3                      | audio/mp3                                                                 |
-| test.odt                      | application/vnd.oasis.opendocument.text                                   |
-| test.ogg                      | application/ogg                                                           |
-| test.ogg                      | audio/ogg                                                                 |
-| test.pcx                      | image/pcx                                                                 |
-| test.pcx                      | image/vnd.zbrush.pcx                                                      |
-| test.pcx                      | image/x-pcx                                                               |
-| test.pdf                      | application/pdf                                                           |
-| test.pl                       | application/x-perl                                                        |
-| test.pl                       | text/plain                                                                |
-| test.pl                       | text/x-perl                                                               |
-| test.pl                       | text/x-script.perl                                                        |
-| test.png                      | image/png                                                                 |
-| test.pnm                      | application/x-portable-anymap                                             |
-| test.pnm                      | image/x-portable-anymap                                                   |
-| test.ppm                      | image/x-portable-pixmap                                                   |
-| test.ppt                      | application/msword                                                        |
-| test.ps                       | application/postscript                                                    |
-| test.psd                      | image/photoshop                                                           |
-| test.py                       | text/x-python                                                             |
-| test.py                       | text/x-script.phyton                                                      |
-| test.rtf                      | application/rtf                                                           |
-| test.rtf                      | application/x-rtf                                                         |
-| test.rtf                      | text/richtext                                                             |
-| test.rtf                      | text/rtf                                                                  |
-| test.sh                       | application/x-bsh                                                         |
-| test.sh                       | application/x-sh                                                          |
-| test.sh                       | application/x-shar                                                        |
-| test.sh                       | text/x-script.sh                                                          |
-| test.sh                       | text/x-sh                                                                 |
-| test.tar                      | application/tar                                                           |
-| test.tar.gz                   | application/gzip                                                          |
-| test.tar.gz                   | application/octet-stream                                                  |
-| test.tar.gz                   | application/x-compressed                                                  |
-| test.tar.gz                   | application/x-gzip                                                        |
-| test.tga                      | image/x-tga                                                               |
-| test.txt                      | text/plain                                                                |
-| test.txt.gz                   | application/gzip                                                          |
-| test.txt.gz                   | application/octet-stream                                                  |
-| test.txt.gz                   | application/x-compressed                                                  |
-| test.txt.gz                   | application/x-gzip                                                        |
-| test.wav                      | audio/x-wav                                                               |
-| test.wmf                      | application/x-msmetafile                                                  |
-| test.wmf                      | image/wmf                                                                 |
-| test.wmf                      | windows/metafile                                                          |
-| test.xcf                      | application/x-xcf                                                         |
-| test.xml                      | application/xml                                                           |
-| test.xpm                      | image/x-xbitmap                                                           |
-| test.xpm                      | image/x-xpixmap                                                           |
-| test.xpm                      | image/xpm                                                                 |
-| test.zip                      | application/zip                                                           |
-
-</div>
 
 ## wand Metrics
 
-| Lang | \# Files | (%) |  LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
-| :--- | -------: | --: | ---: | ---: | ----------: | ---: | -------: | ---: |
-| HTML |        1 | 0.1 | 1044 | 0.81 |          10 | 0.12 |        0 | 0.00 |
-| R    |        7 | 0.7 |  154 | 0.12 |          59 | 0.69 |       70 | 0.69 |
-| JSON |        1 | 0.1 |   80 | 0.06 |           0 | 0.00 |        0 | 0.00 |
-| Rmd  |        1 | 0.1 |   17 | 0.01 |          17 | 0.20 |       31 | 0.31 |
+| Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
+| :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
+| R    |        7 | 0.78 | 154 | 0.61 |          59 | 0.78 |       70 | 0.71 |
+| JSON |        1 | 0.11 |  80 | 0.32 |           0 | 0.00 |        0 | 0.00 |
+| Rmd  |        1 | 0.11 |  17 | 0.07 |          17 | 0.22 |       29 | 0.29 |
 
 ## Code of Conduct
 
