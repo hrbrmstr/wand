@@ -10,12 +10,14 @@
 #'
 #' @md
 #' @param path path to a file
-#' @param ... passed on to [guess_content_type()]
+#' @param guess if `TRUE` (the default), calls [guess_content_type()] if
+#'        no internal rules match the magic header
+#' @param ... passed on to [guess_content_type()] if `guess` is `TRUE`
 #' @return character vector
 #' @export
 #' @examples
-#' get_content_type(system.file("extdat", "test.pdf", package="wand"))
-get_content_type <- function(path, ...) {
+#' get_content_type(system.file("extdat", "pass-through", "test.pdf", package="wand"))
+get_content_type <- function(path, guess = TRUE, ...) {
 
   path <- path.expand(path[1])
   if (!file.exists(path)) stop("File not found.", call.=FALSE)
@@ -28,9 +30,14 @@ get_content_type <- function(path, ...) {
   if (all(c(0xCA,0xFE,0xBA,0xBE) == hdr[1:4])) return("application/java-vm")
 
   if (all(c(0xD0,0xCF,0x11,0xE0,0xA1,0xB1,0x1A,0xE1) == hdr[1:8])) {
-    guessed_name <- guess_content_type(path)
-    if ((length(guessed_name) == 1) && (guessed_name != "???")) return(guessed_name)
+
+    if (guess) {
+      guessed_name <- guess_content_type(path)
+      if ((length(guessed_name) == 1) && (guessed_name != "???")) return(guessed_name)
+    }
+
     return("application/msword")
+
   }
 
   if (all(c(0x25,0x50,0x44,0x46,0x2d,0x31,0x2e) == hdr[1:7])) return("application/pdf")
@@ -107,8 +114,10 @@ get_content_type <- function(path, ...) {
     office_type <- check_office(hdr, path)
     if (length(office_type) > 0) return(office_type)
 
-    guessed_name <- guess_content_type(path)
-    if ((length(guessed_name) == 1) && (guessed_name != "???")) return(guessed_name)
+    if (guess) {
+      guessed_name <- guess_content_type(path)
+      if ((length(guessed_name) == 1) && (guessed_name != "???")) return(guessed_name)
+    }
 
     return("application/zip")
 
@@ -131,6 +140,7 @@ get_content_type <- function(path, ...) {
   if (all(c(0x00,0x00,0x01,0xBA) == hdr[1:4])) return("video/mpeg")
   if (all(c(0x00,0x00,0x01,0xB3) == hdr[1:4])) return("video/mpeg")
 
+  if (!guess) return("???")
 
   return(guess_content_type(path, ...))
 

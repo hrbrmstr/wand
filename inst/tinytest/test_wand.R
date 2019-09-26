@@ -58,8 +58,12 @@ list(
   ), test.zip = "application/zip"
 ) -> results
 
-fils <- list.files(system.file("extdat", package="wand"), full.names=TRUE)
+fils <- list.files(system.file("extdat", "pass-through", package="wand"), full.names=TRUE)
 tst <- lapply(fils, get_content_type)
 names(tst) <- basename(fils)
 
 for(n in names(tst)) expect_identical(results[[n]], tst[[n]])
+
+no_guess <- system.file("extdat", "no-guess", "csv.docx", package = "wand")
+expect_equal(get_content_type(no_guess, guess = FALSE), "???")
+

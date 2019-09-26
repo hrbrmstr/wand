@@ -4,12 +4,15 @@
 \alias{get_content_type}
 \title{Discover MIME type of a file based on contents}
 \usage{
-get_content_type(path, ...)
+get_content_type(path, guess = TRUE, ...)
 }
 \arguments{
 \item{path}{path to a file}
 
-\item{...}{passed on to \code{\link[=guess_content_type]{guess_content_type()}}}
+\item{guess}{if \code{TRUE} (the default), calls \code{\link[=guess_content_type]{guess_content_type()}} if
+no internal rules match the magic header}
+
+\item{...}{passed on to \code{\link[=guess_content_type]{guess_content_type()}} if \code{guess} is \code{TRUE}}
 }
 \value{
 character vector
@@ -25,5 +28,5 @@ comparisons are required/desired. If no match is found, \code{???} is returned
 (see \code{\link[=guess_content_type]{guess_content_type()}} for how to override this behaviour).
 }
 \examples{
-get_content_type(system.file("extdat", "test.pdf", package="wand"))
+get_content_type(system.file("extdat", "pass-through", "test.pdf", package="wand"))
 }

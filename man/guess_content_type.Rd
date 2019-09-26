@@ -27,5 +27,5 @@ return one or more associated types for a given input path. If no match is
 found, \code{???} is returned.
 }
 \examples{
-guess_content_type(system.file("extdat", "test.pdf", package="wand"))
+guess_content_type(system.file("extdat", "pass-through", "test.pdf", package="wand"))
 }

@@ -1,3 +1,8 @@
+# 0.5.1
+- new `guess` logical parameter to `get_content_type()` to control 
+  whether it is used as a last resort passthrough (addresses #4)
+- updated external guess database
+
 # 0.5.0
 - {tidytest}
 - CRAN release
