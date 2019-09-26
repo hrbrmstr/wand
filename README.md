@@ -83,7 +83,7 @@ packageVersion("wand")
 ```
 
 ``` r
-list.files(system.file("extdat", package="wand"), full.names=TRUE) %>% 
+list.files(system.file("extdat", "pass-through", package="wand"), full.names=TRUE) %>% 
   map_df(~{
     tibble(
       fil = basename(.x),
@@ -111,8 +111,8 @@ list.files(system.file("extdat", package="wand"), full.names=TRUE) %>%
 
 | Lang | \# Files |  (%) | LoC |  (%) | Blank lines |  (%) | \# Lines |  (%) |
 | :--- | -------: | ---: | --: | ---: | ----------: | ---: | -------: | ---: |
-| R    |        7 | 0.78 | 154 | 0.61 |          59 | 0.78 |       70 | 0.71 |
-| JSON |        1 | 0.11 |  80 | 0.32 |           0 | 0.00 |        0 | 0.00 |
+| R    |        7 | 0.78 | 159 | 0.62 |          62 | 0.78 |       72 | 0.71 |
+| JSON |        1 | 0.11 |  80 | 0.31 |           0 | 0.00 |        0 | 0.00 |
 | Rmd  |        1 | 0.11 |  17 | 0.07 |          17 | 0.22 |       29 | 0.29 |
 
 ## Code of Conduct

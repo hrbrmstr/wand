@@ -42,7 +42,7 @@ packageVersion("wand")
 ```
 
 ```{r ex1}
-list.files(system.file("extdat", package="wand"), full.names=TRUE) %>% 
+list.files(system.file("extdat", "pass-through", package="wand"), full.names=TRUE) %>% 
   map_df(~{
     tibble(
       fil = basename(.x),
